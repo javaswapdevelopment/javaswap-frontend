@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, TicketFillIcon, PredictionsIcon } from '@pancakeswap/uikit'
+import { Flex, Text, TicketFillIcon } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import PurpleWordHeading from '../PurpleWordHeading'
 import IconCard, { IconCardData } from '../IconCard'
-import PredictionCardContent from './PredictionCardContent'
 import LotteryCardContent from './LotteryCardContent'
 import CompositeImage from '../CompositeImage'
 
@@ -55,12 +54,6 @@ const TopRightImgWrapper = styled(Flex)`
   }
 `
 
-const PredictionCardData: IconCardData = {
-  icon: <PredictionsIcon width="36px" color="inverseContrast" />,
-  background: 'linear-gradient(180deg, #ffb237 0%, #ffcd51 51.17%, #ffe76a 100%);',
-  borderColor: '#ffb237',
-  rotation: '-2.36deg',
-}
 
 const LotteryCardData: IconCardData = {
   icon: <TicketFillIcon color="white" width="36px" />,
@@ -112,16 +105,6 @@ const WinSection = () => {
             {t('Win big with PancakeSwap.')}
           </Text>
           <Flex m="0 auto" flexDirection={['column', null, null, 'row']} maxWidth="600px">
-            <Flex
-              flex="1"
-              maxWidth={['275px', null, null, '100%']}
-              mr={[null, null, null, '24px']}
-              mb={['32px', null, null, '0']}
-            >
-              <IconCard {...PredictionCardData}>
-                <PredictionCardContent />
-              </IconCard>
-            </Flex>
             <Flex flex="1" maxWidth={['275px', null, null, '100%']}>
               <IconCard {...LotteryCardData}>
                 <LotteryCardContent />

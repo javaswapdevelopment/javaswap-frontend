@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { ButtonMenu, ButtonMenuItem, LinkExternal, Flex, Svg, Image, Button } from '@pancakeswap/uikit'
+import { LinkExternal, Flex, Svg, Image, Button } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 const Wrapper = styled.div`
@@ -39,12 +39,6 @@ const Footer = () => {
   return (
     <Wrapper>
       <Flex flexDirection={['column', 'column', 'row']} alignItems="center">
-        <ButtonMenu variant="subtle" scale="sm" activeIndex={0}>
-          <ButtonMenuItem>V2</ButtonMenuItem>
-          <ButtonMenuItem as="a" href="https://v1exchange.pancakeswap.finance/#/">
-            V1 (old)
-          </ButtonMenuItem>
-        </ButtonMenu>
         <LinkExternal
           href="https://www.binance.org/en/bridge?utm_source=PancakeSwap"
           ml={[0, 0, '40px']}

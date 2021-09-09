@@ -21,7 +21,6 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import { TokenImage, TokenPairImage } from 'components/TokenImage'
 import { EnableStatus } from '../types'
 import PercentageOfTotal from './PercentageOfTotal'
-import { SkeletonCardTokens } from './Skeletons'
 
 interface TokenSectionProps extends FlexProps {
   primaryToken?: Token
@@ -71,8 +70,6 @@ interface IfoCardTokensProps {
   ifo: Ifo
   publicIfoData: PublicIfoData
   walletIfoData: WalletIfoData
-  hasProfile: boolean
-  isLoading: boolean
   onApprove: () => Promise<any>
   enableStatus: EnableStatus
 }
@@ -82,8 +79,6 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
   ifo,
   publicIfoData,
   walletIfoData,
-  hasProfile,
-  isLoading,
   onApprove,
   enableStatus,
 }) => {
@@ -104,15 +99,6 @@ const IfoCardTokens: React.FC<IfoCardTokensProps> = ({
   const distributionRatio = ifo[poolId].distributionRatio * 100
 
   const renderTokenSection = () => {
-    if (isLoading) {
-      return <SkeletonCardTokens />
-    }
-    if (account && !hasProfile) {
-      if (publicIfoData.status === 'finished') {
-        return <Text textAlign="center">{t('Activate PancakeSwap Profile to take part in next IFO‘s!')}</Text>
-      }
-      return <Text textAlign="center">{t('You need an active PancakeSwap Profile to take part in an IFO!')}</Text>
-    }
     if (publicIfoData.status === 'coming_soon') {
       return (
         <>
