@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Text, PancakeToggle, Toggle, Flex, Modal, InjectedModalProps } from '@pancakeswap/uikit'
+import { Text, JavaToggle, Toggle, Flex, Modal, InjectedModalProps } from '@javaswap/uikit'
 import {
   useAudioModeManager,
   useExpertModeManager,
@@ -110,7 +110,7 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
             />
           </Flex>
           <PancakeToggleWrapper>
-            <PancakeToggle checked={audioPlay} onChange={toggleSetAudioMode} scale="md" />
+            <JavaToggle checked={audioPlay} onChange={toggleSetAudioMode} scale="md" />
           </PancakeToggleWrapper>
         </Flex>
       </Flex>

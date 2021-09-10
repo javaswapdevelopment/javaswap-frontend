@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { LinkExternal, Flex, Svg, Image, Button } from '@pancakeswap/uikit'
+import { LinkExternal, Flex, Svg, Image, Button } from '@javaswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 
 const Wrapper = styled.div`

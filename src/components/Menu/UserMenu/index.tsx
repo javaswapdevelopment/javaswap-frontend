@@ -7,7 +7,7 @@ import {
   UserMenu as UIKitUserMenu,
   UserMenuDivider,
   UserMenuItem,
-} from '@pancakeswap/uikit'
+} from '@javaswap/uikit'
 import useAuth from 'hooks/useAuth'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { FetchStatus, useGetBnbBalance } from 'hooks/useTokenBalance'

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Currency, Pair } from '@pancakeswap/sdk'
-import { Button, ChevronDownIcon, Text, useModal, Flex } from '@pancakeswap/uikit'
+import { Currency, Pair } from '@javaswap/sdk'
+import { Button, ChevronDownIcon, Text, useModal, Flex } from '@javaswap/uikit'
 import styled from 'styled-components'
 import { useTranslation } from 'contexts/Localization'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

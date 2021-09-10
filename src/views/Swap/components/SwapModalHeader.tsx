@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
-import { Trade, TradeType } from '@pancakeswap/sdk'
-import { Button, Text, ErrorIcon, ArrowDownIcon } from '@pancakeswap/uikit'
+import { Trade, TradeType } from '@javaswap/sdk'
+import { Button, Text, ErrorIcon, ArrowDownIcon } from '@javaswap/uikit'
 import { Field } from 'state/swap/actions'
 import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown, warningSeverity } from 'utils/prices'
 import { AutoColumn } from 'components/Layout/Column'

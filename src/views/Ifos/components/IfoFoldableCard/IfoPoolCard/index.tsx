@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'contexts/Localization'
-import { Card, CardBody, CardHeader, Text, useTooltip, HelpIcon, Flex } from '@pancakeswap/uikit'
+import { Card, CardBody, CardHeader, Text, useTooltip, HelpIcon, Flex } from '@javaswap/uikit'
 import { Ifo, PoolIds } from 'config/constants/types'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
 import { EnableStatus } from '../types'

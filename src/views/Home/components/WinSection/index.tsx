@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Text, TicketFillIcon } from '@pancakeswap/uikit'
+import { Flex, Text, TicketFillIcon } from '@javaswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
 import PurpleWordHeading from '../PurpleWordHeading'
