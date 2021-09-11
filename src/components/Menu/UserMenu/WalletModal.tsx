@@ -14,7 +14,7 @@ import {
 import { parseUnits } from 'ethers/lib/utils'
 import { useTranslation } from 'contexts/Localization'
 import styled from 'styled-components'
-import { FetchStatus, useGetBnbBalance } from 'hooks/useTokenBalance'
+import { FetchStatus, useGetMaticBalance } from 'hooks/useTokenBalance'
 import WalletInfo from './WalletInfo'
 import WalletTransactions from './WalletTransactions'
 
@@ -27,7 +27,7 @@ interface WalletModalProps extends InjectedModalProps {
   initialView?: WalletView
 }
 
-export const LOW_BNB_BALANCE = parseUnits('2', 'gwei')
+export const LOW_MATIC_BALANCE = parseUnits('2', 'gwei')
 
 const ModalHeader = styled(UIKitModalHeader)`
   background: ${({ theme }) => theme.colors.gradients.bubblegum};
@@ -42,8 +42,8 @@ const Tabs = styled.div`
 const WalletModal: React.FC<WalletModalProps> = ({ initialView = WalletView.WALLET_INFO, onDismiss }) => {
   const [view, setView] = useState(initialView)
   const { t } = useTranslation()
-  const { balance, fetchStatus } = useGetBnbBalance()
-  const hasLowBnbBalance = fetchStatus === FetchStatus.SUCCESS && balance.lte(LOW_BNB_BALANCE)
+  const { balance, fetchStatus } = useGetMaticBalance()
+  const hasLowMaticBalance = fetchStatus === FetchStatus.SUCCESS && balance.lte(LOW_MATIC_BALANCE)
 
   const handleClick = (newIndex: number) => {
     setView(newIndex)
@@ -66,7 +66,7 @@ const WalletModal: React.FC<WalletModalProps> = ({ initialView = WalletView.WALL
         </ButtonMenu>
       </Tabs>
       <ModalBody p="24px" maxWidth="400px" width="100%">
-        {view === WalletView.WALLET_INFO && <WalletInfo hasLowBnbBalance={hasLowBnbBalance} onDismiss={onDismiss} />}
+        {view === WalletView.WALLET_INFO && <WalletInfo hasLowMaticBalance={hasLowMaticBalance} onDismiss={onDismiss} />}
         {view === WalletView.TRANSACTIONS && <WalletTransactions />}
       </ModalBody>
     </ModalContainer>

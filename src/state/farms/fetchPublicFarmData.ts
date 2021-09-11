@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
-import masterchefABI from 'config/abi/masterchef.json'
+import masterbrewABI from 'config/abi/masterbrew.json'
 import erc20 from 'config/abi/erc20.json'
-import { getAddress, getMasterChefAddress } from 'utils/addressHelpers'
+import { getAddress, getMasterBrewAddress } from 'utils/addressHelpers'
 import { BIG_TEN, BIG_ZERO } from 'utils/bigNumber'
 import multicall from 'utils/multicall'
 import { SerializedFarm, SerializedBigNumber } from '../types'
@@ -35,7 +35,7 @@ const fetchFarm = async (farm: SerializedFarm): Promise<PublicFarmData> => {
     {
       address: lpAddress,
       name: 'balanceOf',
-      params: [getMasterChefAddress()],
+      params: [getMasterBrewAddress()],
     },
     // Total supply of LP tokens
     {
@@ -70,17 +70,17 @@ const fetchFarm = async (farm: SerializedFarm): Promise<PublicFarmData> => {
   // Total staked in LP, in quote token value
   const lpTotalInQuoteToken = quoteTokenAmountMc.times(new BigNumber(2))
 
-  // Only make masterchef calls if farm has pid
+  // Only make masterbrew calls if farm has pid
   const [info, totalAllocPoint] =
     pid || pid === 0
-      ? await multicall(masterchefABI, [
+      ? await multicall(masterbrewABI, [
           {
-            address: getMasterChefAddress(),
+            address: getMasterBrewAddress(),
             name: 'poolInfo',
             params: [pid],
           },
           {
-            address: getMasterChefAddress(),
+            address: getMasterBrewAddress(),
             name: 'totalAllocPoint',
           },
         ])

@@ -12,7 +12,7 @@ interface HarvestActionsProps {
   earningToken: Token
   sousId: number
   earningTokenPrice: number
-  isBnbPool: boolean
+  isMaticPool: boolean
   isLoading?: boolean
 }
 
@@ -20,7 +20,7 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
   earnings,
   earningToken,
   sousId,
-  isBnbPool,
+  isMaticPool,
   earningTokenPrice,
   isLoading = false,
 }) => {
@@ -41,7 +41,7 @@ const HarvestActions: React.FC<HarvestActionsProps> = ({
       earningToken={earningToken}
       earningsDollarValue={earningTokenDollarBalance}
       sousId={sousId}
-      isBnbPool={isBnbPool}
+      isMaticPool={isMaticPool}
       isCompoundPool={isCompoundPool}
     />,
   )

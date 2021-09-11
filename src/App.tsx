@@ -98,7 +98,7 @@ const App: React.FC = () => {
             <Route path="/staking">
               <Redirect to="/pools" />
             </Route>
-            <Route path="/syrup">
+            <Route path="/espresso">
               <Redirect to="/pools" />
             </Route>
 

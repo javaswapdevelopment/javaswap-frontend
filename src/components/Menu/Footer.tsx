@@ -40,7 +40,7 @@ const Footer = () => {
     <Wrapper>
       <Flex flexDirection={['column', 'column', 'row']} alignItems="center">
         <LinkExternal
-          href="https://www.binance.org/en/bridge?utm_source=PancakeSwap"
+          href="https://www.binance.org/en/bridge?utm_source=JavaSwap"
           ml={[0, 0, '40px']}
           mt={['20px', '20px', 0]}
           mb={['8px', '8px', 0]}
@@ -59,7 +59,7 @@ const Footer = () => {
             id="clickExchangeHelp"
             as="a"
             external
-            href="https://docs.pancakeswap.finance/products/pancakeswap-exchange"
+            href="https://docs.javaswap.io/products/javaswap-exchange"
             variant="subtle"
           >
             {t('Need help ?')}

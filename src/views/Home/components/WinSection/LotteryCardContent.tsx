@@ -3,7 +3,7 @@ import { Flex, Text, Skeleton, Link, Button, ArrowForwardIcon } from '@javaswap/
 import { useTranslation } from 'contexts/Localization'
 import useRefresh from 'hooks/useRefresh'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceJavaBusd } from 'state/farms/hooks'
 import Balance from 'components/Balance'
 import styled from 'styled-components'
 import { fetchCurrentLotteryIdAndMaxBuy, fetchLottery } from 'state/lottery/helpers'
@@ -27,14 +27,14 @@ const LotteryCardContent = () => {
   const { slowRefresh } = useRefresh()
   const [lotteryId, setLotteryId] = useState<string>(null)
   const [currentLotteryPrize, setCurrentLotteryPrize] = useState<BigNumber>(null)
-  const cakePriceBusdAsString = usePriceCakeBusd().toString()
+  const javaPriceBusdAsString = usePriceJavaBusd().toString()
 
-  const cakePrizesText = t('%cakePrizeInUsd% in CAKE prizes this round', { cakePrizeInUsd: cakePriceBusdAsString })
-  const [pretext, prizesThisRound] = cakePrizesText.split(cakePriceBusdAsString)
+  const javaPrizesText = t('%javaPrizeInUsd% in JAVA prizes this round', { javaPrizeInUsd: javaPriceBusdAsString })
+  const [pretext, prizesThisRound] = javaPrizesText.split(javaPriceBusdAsString)
 
-  const cakePriceBusd = useMemo(() => {
-    return new BigNumber(cakePriceBusdAsString)
-  }, [cakePriceBusdAsString])
+  const javaPriceBusd = useMemo(() => {
+    return new BigNumber(javaPriceBusdAsString)
+  }, [javaPriceBusdAsString])
 
   useEffect(() => {
     if (isIntersecting) {
@@ -57,15 +57,15 @@ const LotteryCardContent = () => {
   useEffect(() => {
     // get public data for current lottery
     const fetchCurrentLotteryPrize = async () => {
-      const { amountCollectedInCake } = await fetchLottery(lotteryId)
-      const prizeInBusd = cakePriceBusd.times(amountCollectedInCake)
+      const { amountCollectedInJava } = await fetchLottery(lotteryId)
+      const prizeInBusd = javaPriceBusd.times(amountCollectedInJava)
       setCurrentLotteryPrize(prizeInBusd)
     }
 
     if (lotteryId) {
       fetchCurrentLotteryPrize()
     }
-  }, [lotteryId, slowRefresh, setCurrentLotteryPrize, cakePriceBusd])
+  }, [lotteryId, slowRefresh, setCurrentLotteryPrize, javaPriceBusd])
 
   return (
     <>
@@ -96,7 +96,7 @@ const LotteryCardContent = () => {
           {prizesThisRound}
         </Text>
         <Text color="white" mb="40px">
-          {t('Buy tickets with CAKE, win CAKE if your numbers match')}
+          {t('Buy tickets with JAVA, win JAVA if your numbers match')}
         </Text>
       </Flex>
       <Flex alignItems="center" justifyContent="center">

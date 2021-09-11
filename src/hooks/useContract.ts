@@ -2,10 +2,10 @@ import { useMemo } from 'react'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import {
   getBep20Contract,
-  getCakeContract,
+  getJavaContract,
   getBunnyFactoryContract,
   getBunnySpecialContract,
-  getPancakeRabbitContract,
+  getJavaRabbitContract,
   getProfileContract,
   getIfoV1Contract,
   getIfoV2Contract,
@@ -16,12 +16,12 @@ import {
   getTradingCompetitionContract,
   getEasterNftContract,
   getErc721Contract,
-  getCakeVaultContract,
+  getJavaVaultContract,
   getPredictionsContract,
   getChainlinkOracleContract,
   getSouschefV2Contract,
   getLotteryV2Contract,
-  getBunnySpecialCakeVaultContract,
+  getBunnySpecialJavaVaultContract,
   getBunnySpecialPredictionContract,
   getFarmAuctionContract,
   getBunnySpecialLotteryContract,
@@ -67,9 +67,9 @@ export const useERC721 = (address: string) => {
   return useMemo(() => getErc721Contract(address, library.getSigner()), [address, library])
 }
 
-export const useCake = () => {
+export const useJava = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getCakeContract(library.getSigner()), [library])
+  return useMemo(() => getJavaContract(library.getSigner()), [library])
 }
 
 export const useBunnyFactory = () => {
@@ -77,9 +77,9 @@ export const useBunnyFactory = () => {
   return useMemo(() => getBunnyFactoryContract(library.getSigner()), [library])
 }
 
-export const usePancakeRabbits = () => {
+export const useJavaRabbits = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getPancakeRabbitContract(library.getSigner()), [library])
+  return useMemo(() => getJavaRabbitContract(library.getSigner()), [library])
 }
 
 export const useProfile = () => {
@@ -132,9 +132,9 @@ export const useEasterNftContract = () => {
   return useMemo(() => getEasterNftContract(library.getSigner()), [library])
 }
 
-export const useCakeVaultContract = () => {
+export const useJavaVaultContract = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getCakeVaultContract(library.getSigner()), [library])
+  return useMemo(() => getJavaVaultContract(library.getSigner()), [library])
 }
 
 export const usePredictionsContract = () => {
@@ -147,9 +147,9 @@ export const useChainlinkOracleContract = () => {
   return useMemo(() => getChainlinkOracleContract(library.getSigner()), [library])
 }
 
-export const useSpecialBunnyCakeVaultContract = () => {
+export const useSpecialBunnyJavaVaultContract = () => {
   const { library } = useActiveWeb3React()
-  return useMemo(() => getBunnySpecialCakeVaultContract(library.getSigner()), [library])
+  return useMemo(() => getBunnySpecialJavaVaultContract(library.getSigner()), [library])
 }
 
 export const useSpecialBunnyPredictionContract = () => {

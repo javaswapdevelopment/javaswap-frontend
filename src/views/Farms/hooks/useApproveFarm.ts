@@ -4,12 +4,12 @@ import { useMasterchef } from 'hooks/useContract'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 
 const useApproveFarm = (lpContract: Contract) => {
-  const masterChefContract = useMasterchef()
+  const masterBrewContract = useMasterchef()
   const { callWithGasPrice } = useCallWithGasPrice()
   const handleApprove = useCallback(async () => {
     try {
       const tx = await callWithGasPrice(lpContract, 'approve', [
-        masterChefContract.address,
+        masterBrewContract.address,
         ethers.constants.MaxUint256,
       ])
       const receipt = await tx.wait()
@@ -17,7 +17,7 @@ const useApproveFarm = (lpContract: Contract) => {
     } catch (e) {
       return false
     }
-  }, [lpContract, masterChefContract, callWithGasPrice])
+  }, [lpContract, masterBrewContract, callWithGasPrice])
 
   return { onApprove: handleApprove }
 }

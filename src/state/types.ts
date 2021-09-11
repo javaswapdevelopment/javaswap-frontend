@@ -128,23 +128,23 @@ export interface VaultFees {
 export interface VaultUser {
   isLoading: boolean
   userShares: string
-  cakeAtLastUserAction: string
+  javaAtLastUserAction: string
   lastDepositedTime: string
   lastUserActionTime: string
 }
-export interface CakeVault {
+export interface JavaVault {
   totalShares?: string
   pricePerFullShare?: string
-  totalCakeInVault?: string
-  estimatedCakeBountyReward?: string
-  totalPendingCakeHarvest?: string
+  totalJavaInVault?: string
+  estimatedJavaBountyReward?: string
+  totalPendingJavaHarvest?: string
   fees?: VaultFees
   userData?: VaultUser
 }
 
 export interface PoolsState {
   data: SerializedPool[]
-  cakeVault: CakeVault
+  javaVault: JavaVault
   userDataLoaded: boolean
 }
 
@@ -266,8 +266,8 @@ export interface Bet {
   claimedAt: number
   claimedBlock: number
   claimedHash: string
-  claimedBNB: number
-  claimedNetBNB: number
+  claimedMATIC: number
+  claimedNetMATIC: number
   createdAt: number
   updatedAt: number
   user?: PredictionUser
@@ -282,14 +282,14 @@ export interface PredictionUser {
   totalBets: number
   totalBetsBull: number
   totalBetsBear: number
-  totalBNB: number
-  totalBNBBull: number
-  totalBNBBear: number
+  totalMATIC: number
+  totalMATICBull: number
+  totalMATICBear: number
   totalBetsClaimed: number
-  totalBNBClaimed: number
+  totalMATICClaimed: number
   winRate: number
-  averageBNB: number
-  netBNB: number
+  averageMATIC: number
+  netMATIC: number
   bets?: Bet[]
 }
 
@@ -505,19 +505,19 @@ interface LotteryRoundGenerics {
 
 export interface LotteryRound extends LotteryRoundGenerics {
   userTickets?: LotteryRoundUserTickets
-  priceTicketInCake: BigNumber
+  priceTicketInJava: BigNumber
   discountDivisor: BigNumber
-  amountCollectedInCake: BigNumber
-  cakePerBracket: string[]
+  amountCollectedInJava: BigNumber
+  javaPerBracket: string[]
   countWinnersPerBracket: string[]
   rewardsBreakdown: string[]
 }
 
 export interface LotteryResponse extends LotteryRoundGenerics {
-  priceTicketInCake: SerializedBigNumber
+  priceTicketInJava: SerializedBigNumber
   discountDivisor: SerializedBigNumber
-  amountCollectedInCake: SerializedBigNumber
-  cakePerBracket: SerializedBigNumber[]
+  amountCollectedInJava: SerializedBigNumber
+  javaPerBracket: SerializedBigNumber[]
   countWinnersPerBracket: SerializedBigNumber[]
   rewardsBreakdown: SerializedBigNumber[]
 }
@@ -545,7 +545,7 @@ export interface LotteryRoundGraphEntity {
 
 export interface LotteryUserGraphEntity {
   account: string
-  totalCake: string
+  totalJava: string
   totalTickets: string
   rounds: UserRound[]
 }

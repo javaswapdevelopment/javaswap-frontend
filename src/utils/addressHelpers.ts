@@ -7,8 +7,8 @@ export const getAddress = (address: Address): string => {
   return address[chainId] ? address[chainId] : address[ChainId.MAINNET]
 }
 
-export const getMasterChefAddress = () => {
-  return getAddress(addresses.masterChef)
+export const getMasterBrewAddress = () => {
+  return getAddress(addresses.masterBrew)
 }
 export const getMulticallAddress = () => {
   return getAddress(addresses.multiCall)
@@ -16,11 +16,11 @@ export const getMulticallAddress = () => {
 export const getLotteryV2Address = () => {
   return getAddress(addresses.lotteryV2)
 }
-export const getPancakeProfileAddress = () => {
-  return getAddress(addresses.pancakeProfile)
+export const getJavaProfileAddress = () => {
+  return getAddress(addresses.javaProfile)
 }
-export const getPancakeRabbitsAddress = () => {
-  return getAddress(addresses.pancakeRabbits)
+export const getJavaRabbitsAddress = () => {
+  return getAddress(addresses.javaRabbits)
 }
 export const getBunnyFactoryAddress = () => {
   return getAddress(addresses.bunnyFactory)
@@ -40,8 +40,8 @@ export const getTradingCompetitionAddress = () => {
 export const getEasterNftAddress = () => {
   return getAddress(addresses.easterNft)
 }
-export const getCakeVaultAddress = () => {
-  return getAddress(addresses.cakeVault)
+export const getJavaVaultAddress = () => {
+  return getAddress(addresses.javaVault)
 }
 export const getPredictionsAddress = () => {
   return getAddress(addresses.predictions)
@@ -49,8 +49,8 @@ export const getPredictionsAddress = () => {
 export const getChainlinkOracleAddress = () => {
   return getAddress(addresses.chainlinkOracle)
 }
-export const getBunnySpecialCakeVaultAddress = () => {
-  return getAddress(addresses.bunnySpecialCakeVault)
+export const getBunnySpecialJavaVaultAddress = () => {
+  return getAddress(addresses.bunnySpecialJavaVault)
 }
 export const getBunnySpecialPredictionAddress = () => {
   return getAddress(addresses.bunnySpecialPrediction)

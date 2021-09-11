@@ -6,7 +6,7 @@ import { getAddress } from './addressHelpers'
 import { getErc721Contract } from './contractHelpers'
 
 /**
- * Some sources like Pancake do not return HTTP tokenURI's
+ * Some sources like Java do not return HTTP tokenURI's
  */
 export const getTokenUrl = (tokenUri: string) => {
   if (tokenUri.startsWith('ipfs://')) {
@@ -16,7 +16,7 @@ export const getTokenUrl = (tokenUri: string) => {
   return tokenUri
 }
 
-export const getBunnyNftAddress = (collectionKey: CollectionKey = CollectionKey.PANCAKE) => {
+export const getBunnyNftAddress = (collectionKey: CollectionKey = CollectionKey.JAVA) => {
   return getAddress(collections[collectionKey].address)
 }
 
@@ -70,7 +70,7 @@ export const getNftByTokenId = async (nftAddress: string, tokenId: number): Prom
     return null
   }
 
-  return nfts.pancake.find((nft) => {
+  return nfts.java.find((nft) => {
     return uriData.image.includes(nft.identifier)
   })
 }

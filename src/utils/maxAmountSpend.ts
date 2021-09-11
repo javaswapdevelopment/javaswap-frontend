@@ -1,5 +1,5 @@
 import { CurrencyAmount, ETHER, JSBI } from '@javaswap/sdk'
-import { MIN_BNB } from '../config/constants'
+import { MIN_MATIC } from '../config/constants'
 
 /**
  * Given some token amount, return the max that can be spent of it
@@ -8,8 +8,8 @@ import { MIN_BNB } from '../config/constants'
 export function maxAmountSpend(currencyAmount?: CurrencyAmount): CurrencyAmount | undefined {
   if (!currencyAmount) return undefined
   if (currencyAmount.currency === ETHER) {
-    if (JSBI.greaterThan(currencyAmount.raw, MIN_BNB)) {
-      return CurrencyAmount.ether(JSBI.subtract(currencyAmount.raw, MIN_BNB))
+    if (JSBI.greaterThan(currencyAmount.raw, MIN_MATIC)) {
+      return CurrencyAmount.ether(JSBI.subtract(currencyAmount.raw, MIN_MATIC))
     }
     return CurrencyAmount.ether(JSBI.BigInt(0))
   }

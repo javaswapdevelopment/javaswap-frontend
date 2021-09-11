@@ -150,14 +150,14 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
               </Flex>
               <Flex>
                 <a
-                  href={`https://exchange.pancakeswap.finance/#/add/${poolData.token0.address}/${poolData.token1.address}`}
+                  href={`https://exchange.javaswap.io/#/add/${poolData.token0.address}/${poolData.token1.address}`}
                 >
                   <Button mr="8px" variant="secondary">
                     {t('Add Liquidity')}
                   </Button>
                 </a>
                 <a
-                  href={`https://exchange.pancakeswap.finance/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
+                  href={`https://exchange.javaswap.io/#/swap?inputCurrency=${poolData.token0.address}&outputCurrency=${poolData.token1.address}`}
                 >
                   <Button>{t('Trade')}</Button>
                 </a>

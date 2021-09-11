@@ -1,8 +1,8 @@
-import pancakeBunnies from './pancakeBunnies'
+import javaBunnies from './javaBunnies'
 import { CollectionKey, Nfts } from './types'
 
 const nfts: Nfts = {
-  [CollectionKey.PANCAKE]: pancakeBunnies,
+  [CollectionKey.JAVA]: javaBunnies,
 }
 
 export default nfts

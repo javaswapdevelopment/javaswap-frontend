@@ -24,6 +24,6 @@ export const useGetCollectibles = () => {
     isInitialized,
     isLoading,
     tokenIds: data,
-    nftsInWallet: Nfts.pancake.filter((nft) => identifiers.includes(nft.identifier)),
+    nftsInWallet: Nfts.java.filter((nft) => identifiers.includes(nft.identifier)),
   }
 }

@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo } from 'react'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceJavaBusd } from 'state/farms/hooks'
 import { useAppDispatch } from 'state'
 import { orderBy } from 'lodash'
 import { DeserializedPool } from 'state/types'
-import { fetchCakeVaultFees, fetchPoolsPublicDataAsync } from 'state/pools'
+import { fetchJavaVaultFees, fetchPoolsPublicDataAsync } from 'state/pools'
 import { simpleRpcProvider } from 'utils/providers'
-import { useCakeVault, usePools } from 'state/pools/hooks'
+import { useJavaVault, usePools } from 'state/pools/hooks'
 import { getAprData } from 'views/Pools/helpers'
 
 enum FetchStatus {
@@ -20,20 +20,20 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
   const { pools: poolsWithoutAutoVault } = usePools()
   const {
     fees: { performanceFee },
-  } = useCakeVault()
+  } = useJavaVault()
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.NOT_FETCHED)
   const [topPools, setTopPools] = useState<DeserializedPool[]>([null, null, null, null, null])
 
   const pools = useMemo(() => {
     const activePools = poolsWithoutAutoVault.filter((pool) => !pool.isFinished)
-    const cakePool = activePools.find((pool) => pool.sousId === 0)
-    const cakeAutoVault = { ...cakePool, isAutoVault: true }
-    const cakeAutoVaultWithApr = { ...cakeAutoVault, apr: getAprData(cakeAutoVault, performanceFeeAsDecimal).apr }
-    return [cakeAutoVaultWithApr, ...poolsWithoutAutoVault]
+    const javaPool = activePools.find((pool) => pool.sousId === 0)
+    const javaAutoVault = { ...javaPool, isAutoVault: true }
+    const javaAutoVaultWithApr = { ...javaAutoVault, apr: getAprData(javaAutoVault, performanceFeeAsDecimal).apr }
+    return [javaAutoVaultWithApr, ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault, performanceFeeAsDecimal])
 
-  const cakePriceBusd = usePriceCakeBusd()
+  const javaPriceBusd = usePriceJavaBusd()
 
   useEffect(() => {
     const fetchPoolsPublicData = async () => {
@@ -41,7 +41,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
       const blockNumber = await simpleRpcProvider.getBlockNumber()
 
       try {
-        await dispatch(fetchCakeVaultFees())
+        await dispatch(fetchJavaVaultFees())
         await dispatch(fetchPoolsPublicDataAsync(blockNumber))
         setFetchStatus(FetchStatus.SUCCESS)
       } catch (e) {
@@ -63,7 +63,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
     if (fetchStatus === FetchStatus.SUCCESS && !topPools[0]) {
       getTopPoolsByApr(pools)
     }
-  }, [setTopPools, pools, fetchStatus, cakePriceBusd, topPools, performanceFeeAsDecimal])
+  }, [setTopPools, pools, fetchStatus, javaPriceBusd, topPools, performanceFeeAsDecimal])
 
   return { topPools }
 }

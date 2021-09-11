@@ -8,9 +8,9 @@ import useRefresh from 'hooks/useRefresh'
 import {
   fetchPoolsPublicDataAsync,
   fetchPoolsUserDataAsync,
-  fetchCakeVaultPublicData,
-  fetchCakeVaultUserData,
-  fetchCakeVaultFees,
+  fetchJavaVaultPublicData,
+  fetchJavaVaultUserData,
+  fetchJavaVaultFees,
   fetchPoolsStakingLimitsAsync,
 } from '.'
 import { State, DeserializedPool } from '../types'
@@ -49,48 +49,48 @@ export const usePools = (): { pools: DeserializedPool[]; userDataLoaded: boolean
   return { pools: pools.map(transformPool), userDataLoaded }
 }
 
-export const useFetchCakeVault = () => {
+export const useFetchJavaVault = () => {
   const { account } = useWeb3React()
   const { fastRefresh } = useRefresh()
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    dispatch(fetchCakeVaultPublicData())
+    dispatch(fetchJavaVaultPublicData())
   }, [dispatch, fastRefresh])
 
   useEffect(() => {
-    dispatch(fetchCakeVaultUserData({ account }))
+    dispatch(fetchJavaVaultUserData({ account }))
   }, [dispatch, fastRefresh, account])
 
   useEffect(() => {
-    dispatch(fetchCakeVaultFees())
+    dispatch(fetchJavaVaultFees())
   }, [dispatch])
 }
 
-export const useCakeVault = () => {
+export const useJavaVault = () => {
   const {
     totalShares: totalSharesAsString,
     pricePerFullShare: pricePerFullShareAsString,
-    totalCakeInVault: totalCakeInVaultAsString,
-    estimatedCakeBountyReward: estimatedCakeBountyRewardAsString,
-    totalPendingCakeHarvest: totalPendingCakeHarvestAsString,
+    totalJavaInVault: totalJavaInVaultAsString,
+    estimatedJavaBountyReward: estimatedJavaBountyRewardAsString,
+    totalPendingJavaHarvest: totalPendingJavaHarvestAsString,
     fees: { performanceFee, callFee, withdrawalFee, withdrawalFeePeriod },
     userData: {
       isLoading,
       userShares: userSharesAsString,
-      cakeAtLastUserAction: cakeAtLastUserActionAsString,
+      javaAtLastUserAction: javaAtLastUserActionAsString,
       lastDepositedTime,
       lastUserActionTime,
     },
-  } = useSelector((state: State) => state.pools.cakeVault)
+  } = useSelector((state: State) => state.pools.javaVault)
 
-  const estimatedCakeBountyReward = useMemo(() => {
-    return new BigNumber(estimatedCakeBountyRewardAsString)
-  }, [estimatedCakeBountyRewardAsString])
+  const estimatedJavaBountyReward = useMemo(() => {
+    return new BigNumber(estimatedJavaBountyRewardAsString)
+  }, [estimatedJavaBountyRewardAsString])
 
-  const totalPendingCakeHarvest = useMemo(() => {
-    return new BigNumber(totalPendingCakeHarvestAsString)
-  }, [totalPendingCakeHarvestAsString])
+  const totalPendingJavaHarvest = useMemo(() => {
+    return new BigNumber(totalPendingJavaHarvestAsString)
+  }, [totalPendingJavaHarvestAsString])
 
   const totalShares = useMemo(() => {
     return new BigNumber(totalSharesAsString)
@@ -100,24 +100,24 @@ export const useCakeVault = () => {
     return new BigNumber(pricePerFullShareAsString)
   }, [pricePerFullShareAsString])
 
-  const totalCakeInVault = useMemo(() => {
-    return new BigNumber(totalCakeInVaultAsString)
-  }, [totalCakeInVaultAsString])
+  const totalJavaInVault = useMemo(() => {
+    return new BigNumber(totalJavaInVaultAsString)
+  }, [totalJavaInVaultAsString])
 
   const userShares = useMemo(() => {
     return new BigNumber(userSharesAsString)
   }, [userSharesAsString])
 
-  const cakeAtLastUserAction = useMemo(() => {
-    return new BigNumber(cakeAtLastUserActionAsString)
-  }, [cakeAtLastUserActionAsString])
+  const javaAtLastUserAction = useMemo(() => {
+    return new BigNumber(javaAtLastUserActionAsString)
+  }, [javaAtLastUserActionAsString])
 
   return {
     totalShares,
     pricePerFullShare,
-    totalCakeInVault,
-    estimatedCakeBountyReward,
-    totalPendingCakeHarvest,
+    totalJavaInVault,
+    estimatedJavaBountyReward,
+    totalPendingJavaHarvest,
     fees: {
       performanceFee,
       callFee,
@@ -127,7 +127,7 @@ export const useCakeVault = () => {
     userData: {
       isLoading,
       userShares,
-      cakeAtLastUserAction,
+      javaAtLastUserAction,
       lastDepositedTime,
       lastUserActionTime,
     },

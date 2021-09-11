@@ -1,7 +1,7 @@
-# Contributing to the Pancake ecosystem 🥞
+# Contributing to the Java ecosystem 🥞
 
 Thanks for taking the time to contribute !
-You can start by reading our [Contribution guidelines](https://docs.pancakeswap.finance/code/contributing) first.
+You can start by reading our [Contribution guidelines](https://docs.javaswap.io/code/contributing) first.
 
 ## Setup
 
@@ -54,7 +54,7 @@ t(key, data)
 If a Crowdin translation like this `You have %num% left in your wallet` - would look something like:
 
 ```
-t(`You have %num% left in your wallet`, { num: cakeBalance })
+t(`You have %num% left in your wallet`, { num: javaBalance })
 ```
 
 ## Issue reports

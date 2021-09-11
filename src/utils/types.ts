@@ -117,7 +117,7 @@ export type GetUserProfileResponse = [
   boolean,
 ]
 
-export interface PancakeProfileContract extends Contract {
+export interface JavaProfileContract extends Contract {
   getUserProfile: ContractFunction<GetUserProfileResponse>
   hasRegistered: ContractFunction<boolean>
 }

@@ -3,14 +3,14 @@ import { stakeFarm } from 'utils/calls'
 import { useMasterchef } from 'hooks/useContract'
 
 const useStakeFarms = (pid: number) => {
-  const masterChefContract = useMasterchef()
+  const masterBrewContract = useMasterchef()
 
   const handleStake = useCallback(
     async (amount: string) => {
-      const txHash = await stakeFarm(masterChefContract, pid, amount)
+      const txHash = await stakeFarm(masterBrewContract, pid, amount)
       console.info(txHash)
     },
-    [masterChefContract, pid],
+    [masterBrewContract, pid],
   )
 
   return { onStake: handleStake }

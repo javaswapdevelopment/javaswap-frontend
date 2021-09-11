@@ -5,7 +5,7 @@ import { useTranslation } from 'contexts/Localization'
 import { LotteryTicket, LotteryTicketClaimData } from 'config/constants/types'
 import { getBalanceAmount } from 'utils/formatBalance'
 import { callWithEstimateGas } from 'utils/calls'
-import { usePriceCakeBusd } from 'state/farms/hooks'
+import { usePriceJavaBusd } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import { fetchUserLotteries } from 'state/lottery'
 import { useGasPrice } from 'state/user/hooks'
@@ -37,10 +37,10 @@ const ClaimInnerContainer: React.FC<ClaimInnerProps> = ({ onSuccess, roundsToCla
   const lotteryContract = useLotteryV2Contract()
   const activeClaimData = roundsToClaim[activeClaimIndex]
 
-  const cakePriceBusd = usePriceCakeBusd()
-  const cakeReward = activeClaimData.cakeTotal
-  const dollarReward = cakeReward.times(cakePriceBusd)
-  const rewardAsBalance = getBalanceAmount(cakeReward).toNumber()
+  const javaPriceBusd = usePriceJavaBusd()
+  const javaReward = activeClaimData.javaTotal
+  const dollarReward = javaReward.times(javaPriceBusd)
+  const rewardAsBalance = getBalanceAmount(javaReward).toNumber()
   const dollarRewardAsBalance = getBalanceAmount(dollarReward).toNumber()
 
   const parseUnclaimedTicketDataForClaimCall = (ticketsWithUnclaimedRewards: LotteryTicket[], lotteryId: string) => {
@@ -95,7 +95,7 @@ const ClaimInnerContainer: React.FC<ClaimInnerProps> = ({ onSuccess, roundsToCla
         toastSuccess(
           t('Prizes Collected!'),
           <ToastDescriptionWithTx txHash={receipt.transactionHash}>
-            {t('Your CAKE prizes for round %lotteryId% have been sent to your wallet', { lotteryId })}
+            {t('Your JAVA prizes for round %lotteryId% have been sent to your wallet', { lotteryId })}
           </ToastDescriptionWithTx>,
         )
         setPendingTx(false)
@@ -161,7 +161,7 @@ const ClaimInnerContainer: React.FC<ClaimInnerProps> = ({ onSuccess, roundsToCla
       setPendingTx(false)
       toastSuccess(
         t('Prizes Collected!'),
-        t('Your CAKE prizes for round %lotteryId% have been sent to your wallet', { lotteryId }),
+        t('Your JAVA prizes for round %lotteryId% have been sent to your wallet', { lotteryId }),
       )
       handleProgressToNextClaim()
     }
@@ -185,7 +185,7 @@ const ClaimInnerContainer: React.FC<ClaimInnerProps> = ({ onSuccess, roundsToCla
             fontSize="44px"
             bold
             color="secondary"
-            unit=" CAKE!"
+            unit=" JAVA!"
           />
           <PresentWonIcon ml={['0', null, '12px']} width="64px" />
         </Flex>

@@ -38,4 +38,4 @@ It might ask you to update by installing latest GUI version - this will download
 
 ### Tips and tricks
 
-- If you trying to debug something in GUI console be sure to switch to context of iFramed app (Click "top &#9660;" and then "Your App: pancake-frontend")
+- If you trying to debug something in GUI console be sure to switch to context of iFramed app (Click "top &#9660;" and then "Your App: java-frontend")

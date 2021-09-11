@@ -8,12 +8,12 @@
       },
       {
         "internalType": "contract IBEP20",
-        "name": "_cakeToken",
+        "name": "_javaToken",
         "type": "address"
       },
       {
-        "internalType": "contract IPancakeProfile",
-        "name": "_pancakeProfile",
+        "internalType": "contract IJavaProfile",
+        "name": "_javaProfile",
         "type": "address"
       },
       {
@@ -43,7 +43,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "costCake",
+        "name": "costJava",
         "type": "uint256"
       }
     ],
@@ -68,7 +68,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "costCake",
+        "name": "costJava",
         "type": "uint256"
       },
       {
@@ -144,7 +144,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_cakeCost",
+        "name": "_javaCost",
         "type": "uint256"
       }
     ],
@@ -175,7 +175,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "cakeCost",
+        "name": "javaCost",
         "type": "uint256"
       },
       {
@@ -220,7 +220,7 @@
   },
   {
     "inputs": [],
-    "name": "cakeToken",
+    "name": "javaToken",
     "outputs": [
       {
         "internalType": "contract IBEP20",
@@ -370,10 +370,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "javaProfile",
     "outputs": [
       {
-        "internalType": "contract IPancakeProfile",
+        "internalType": "contract IJavaProfile",
         "name": "",
         "type": "address"
       }
@@ -415,7 +415,7 @@
       },
       {
         "internalType": "uint256",
-        "name": "_cakeCost",
+        "name": "_javaCost",
         "type": "uint256"
       },
       {

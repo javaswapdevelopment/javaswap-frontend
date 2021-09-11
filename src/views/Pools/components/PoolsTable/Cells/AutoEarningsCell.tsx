@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpoints } from '@javaswap/uikit'
 import { DeserializedPool } from 'state/types'
 import Balance from 'components/Balance'
-import { useCakeVault } from 'state/pools/hooks'
+import { useJavaVault } from 'state/pools/hooks'
 import { useTranslation } from 'contexts/Localization'
-import { getCakeVaultEarnings } from 'views/Pools/helpers'
+import { getJavaVaultEarnings } from 'views/Pools/helpers'
 import BaseCell, { CellContent } from './BaseCell'
 
 interface AutoEarningsCellProps {
@@ -31,19 +31,19 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({ pool, account, user
   const { earningTokenPrice } = pool
 
   const {
-    userData: { cakeAtLastUserAction, userShares, lastUserActionTime },
+    userData: { javaAtLastUserAction, userShares, lastUserActionTime },
     pricePerFullShare,
-  } = useCakeVault()
-  const { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay } = getCakeVaultEarnings(
+  } = useJavaVault()
+  const { hasAutoEarnings, autoJavaToDisplay, autoUsdToDisplay } = getJavaVaultEarnings(
     account,
-    cakeAtLastUserAction,
+    javaAtLastUserAction,
     userShares,
     pricePerFullShare,
     earningTokenPrice,
   )
 
-  const labelText = t('Recent CAKE profit')
-  const earningTokenBalance = autoCakeToDisplay
+  const labelText = t('Recent JAVA profit')
+  const earningTokenBalance = autoJavaToDisplay
   const hasEarnings = hasAutoEarnings
   const earningTokenDollarBalance = autoUsdToDisplay
 
@@ -53,7 +53,7 @@ const AutoEarningsCell: React.FC<AutoEarningsCellProps> = ({ pool, account, user
 
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     <>
-      <Balance fontSize="16px" value={autoCakeToDisplay} decimals={3} bold unit=" CAKE" />
+      <Balance fontSize="16px" value={autoJavaToDisplay} decimals={3} bold unit=" JAVA" />
       <Balance fontSize="16px" value={autoUsdToDisplay} decimals={2} bold prefix="~$" />
       {t('Earned since your last action')}
       <Text>{dateStringToDisplay}</Text>

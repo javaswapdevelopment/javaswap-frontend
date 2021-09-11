@@ -1,11 +1,11 @@
 import { Collections, CollectionKey } from './types'
 
 const collections: Collections = {
-  [CollectionKey.PANCAKE]: {
+  [CollectionKey.JAVA]: {
     name: '',
     address: {
-      56: '',
-      97: '',
+      137: '',
+      80001: '',
     },
   },
 }

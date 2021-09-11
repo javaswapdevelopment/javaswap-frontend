@@ -36,7 +36,7 @@ const Wrapper = styled(Flex)`
   overflow: hidden;
 `
 
-const FloatingPancakesWrapper = styled(Container)`
+const FloatingJavasWrapper = styled(Container)`
   overflow: hidden;
   position: absolute;
   width: 100%;
@@ -64,20 +64,20 @@ const BottomRightImgWrapper = styled(Flex)`
 `
 
 const topLeftImage = {
-  path: '/images/home/flying-pancakes/',
+  path: '/images/home/flying-javas/',
   attributes: [
-    { src: '1-bottom', alt: 'Pancake flying on the bottom' },
-    { src: '1-left', alt: 'Pancake flying on the left' },
-    { src: '1-top', alt: 'Pancake flying on the top' },
+    { src: '1-bottom', alt: 'Java flying on the bottom' },
+    { src: '1-left', alt: 'Java flying on the left' },
+    { src: '1-top', alt: 'Java flying on the top' },
   ],
 }
 
 const bottomRightImage = {
-  path: '/images/home/flying-pancakes/',
+  path: '/images/home/flying-javas/',
   attributes: [
-    { src: '2-bottom', alt: 'Pancake flying on the bottom' },
-    { src: '2-top', alt: 'Pancake flying on the top' },
-    { src: '2-right', alt: 'Pancake flying on the right' },
+    { src: '2-bottom', alt: 'Java flying on the bottom' },
+    { src: '2-top', alt: 'Java flying on the top' },
+    { src: '2-right', alt: 'Java flying on the right' },
   ],
 }
 
@@ -92,14 +92,14 @@ const Footer = () => {
           <StyledSunburst />
         </Flex>
       </BgWrapper>
-      <FloatingPancakesWrapper>
+      <FloatingJavasWrapper>
         <TopLeftImgWrapper>
           <CompositeImage {...topLeftImage} maxHeight="256px" />
         </TopLeftImgWrapper>
         <BottomRightImgWrapper>
           <CompositeImage {...bottomRightImage} maxHeight="256px" />
         </BottomRightImgWrapper>
-      </FloatingPancakesWrapper>
+      </FloatingJavasWrapper>
       <Wrapper>
         <Heading mb="24px" scale="xl" color="white">
           {t('Start in seconds.')}
@@ -111,7 +111,7 @@ const Footer = () => {
           {t('No registration needed.')}
         </Text>
 
-        <Link external href="https://docs.pancakeswap.finance/">
+        <Link external href="https://docs.javaswap.io/">
           {t('Learn how to start')}
         </Link>
         {!account && <ConnectWalletButton mt="24px" />}

@@ -117,7 +117,7 @@ const TokenPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                 {t('No pool has been created with this token yet. Create one')}
                 <LinkExternal
                   style={{ display: 'inline', marginLeft: '6px' }}
-                  href={`https://exchange.pancakeswap.finance/#/add/${address}`}
+                  href={`https://exchange.javaswap.io/#/add/${address}`}
                 >
                   {t('here.')}
                 </LinkExternal>
@@ -177,12 +177,12 @@ const TokenPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                 </Flex>
               </Flex>
               <Flex>
-                <a href={`https://exchange.pancakeswap.finance/#/add/${address}`}>
+                <a href={`https://exchange.javaswap.io/#/add/${address}`}>
                   <Button mr="8px" variant="secondary">
                     {t('Add Liquidity')}
                   </Button>
                 </a>
-                <a href={`https://exchange.pancakeswap.finance/#/swap?inputCurrency=${address}`}>
+                <a href={`https://exchange.javaswap.io/#/swap?inputCurrency=${address}`}>
                   <Button>{t('Trade')}</Button>
                 </a>
               </Flex>

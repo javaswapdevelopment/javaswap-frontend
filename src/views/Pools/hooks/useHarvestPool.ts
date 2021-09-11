@@ -19,30 +19,30 @@ const harvestPool = async (sousChefContract) => {
   return receipt.status
 }
 
-const harvestPoolBnb = async (sousChefContract) => {
+const harvestPoolMatic = async (sousChefContract) => {
   const gasPrice = getGasPrice()
   const tx = await sousChefContract.deposit({ ...options, value: BIG_ZERO, gasPrice })
   const receipt = await tx.wait()
   return receipt.status
 }
 
-const useHarvestPool = (sousId, isUsingBnb = false) => {
+const useHarvestPool = (sousId, isUsingMatic = false) => {
   const dispatch = useAppDispatch()
   const { account } = useWeb3React()
   const sousChefContract = useSousChef(sousId)
-  const masterChefContract = useMasterchef()
+  const masterBrewContract = useMasterchef()
 
   const handleHarvest = useCallback(async () => {
     if (sousId === 0) {
-      await harvestFarm(masterChefContract, 0)
-    } else if (isUsingBnb) {
-      await harvestPoolBnb(sousChefContract)
+      await harvestFarm(masterBrewContract, 0)
+    } else if (isUsingMatic) {
+      await harvestPoolMatic(sousChefContract)
     } else {
       await harvestPool(sousChefContract)
     }
     dispatch(updateUserPendingReward(sousId, account))
     dispatch(updateUserBalance(sousId, account))
-  }, [account, dispatch, isUsingBnb, masterChefContract, sousChefContract, sousId])
+  }, [account, dispatch, isUsingMatic, masterBrewContract, sousChefContract, sousId])
 
   return { onReward: handleHarvest }
 }

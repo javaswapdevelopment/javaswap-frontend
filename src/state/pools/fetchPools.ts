@@ -1,8 +1,8 @@
 import BigNumber from 'bignumber.js'
 import poolsConfig from 'config/constants/pools'
 import sousChefABI from 'config/abi/sousChef.json'
-import cakeABI from 'config/abi/cake.json'
-import wbnbABI from 'config/abi/weth.json'
+import javaABI from 'config/abi/java.json'
+import wmaticABI from 'config/abi/weth.json'
 import multicall from 'utils/multicall'
 import { getAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
@@ -27,11 +27,11 @@ export const fetchPoolsBlockLimits = async () => {
   const starts = await multicall(sousChefABI, callsStartBlock)
   const ends = await multicall(sousChefABI, callsEndBlock)
 
-  return poolsWithEnd.map((cakePoolConfig, index) => {
+  return poolsWithEnd.map((javaPoolConfig, index) => {
     const startBlock = starts[index]
     const endBlock = ends[index]
     return {
-      sousId: cakePoolConfig.sousId,
+      sousId: javaPoolConfig.sousId,
       startBlock: new BigNumber(startBlock).toJSON(),
       endBlock: new BigNumber(endBlock).toJSON(),
     }
@@ -39,10 +39,10 @@ export const fetchPoolsBlockLimits = async () => {
 }
 
 export const fetchPoolsTotalStaking = async () => {
-  const nonBnbPools = poolsConfig.filter((p) => p.stakingToken.symbol !== 'BNB')
-  const bnbPool = poolsConfig.filter((p) => p.stakingToken.symbol === 'BNB')
+  const nonMaticPools = poolsConfig.filter((p) => p.stakingToken.symbol !== 'MATIC')
+  const maticPool = poolsConfig.filter((p) => p.stakingToken.symbol === 'MATIC')
 
-  const callsNonBnbPools = nonBnbPools.map((poolConfig) => {
+  const callsNonMaticPools = nonMaticPools.map((poolConfig) => {
     return {
       address: poolConfig.stakingToken.address,
       name: 'balanceOf',
@@ -50,25 +50,25 @@ export const fetchPoolsTotalStaking = async () => {
     }
   })
 
-  const callsBnbPools = bnbPool.map((poolConfig) => {
+  const callsMaticPools = maticPool.map((poolConfig) => {
     return {
-      address: tokens.wbnb.address,
+      address: tokens.wmatic.address,
       name: 'balanceOf',
       params: [getAddress(poolConfig.contractAddress)],
     }
   })
 
-  const nonBnbPoolsTotalStaked = await multicall(cakeABI, callsNonBnbPools)
-  const bnbPoolsTotalStaked = await multicall(wbnbABI, callsBnbPools)
+  const nonMaticPoolsTotalStaked = await multicall(javaABI, callsNonMaticPools)
+  const maticPoolsTotalStaked = await multicall(wmaticABI, callsMaticPools)
 
   return [
-    ...nonBnbPools.map((p, index) => ({
+    ...nonMaticPools.map((p, index) => ({
       sousId: p.sousId,
-      totalStaked: new BigNumber(nonBnbPoolsTotalStaked[index]).toJSON(),
+      totalStaked: new BigNumber(nonMaticPoolsTotalStaked[index]).toJSON(),
     })),
-    ...bnbPool.map((p, index) => ({
+    ...maticPool.map((p, index) => ({
       sousId: p.sousId,
-      totalStaked: new BigNumber(bnbPoolsTotalStaked[index]).toJSON(),
+      totalStaked: new BigNumber(maticPoolsTotalStaked[index]).toJSON(),
     })),
   ]
 }
@@ -87,7 +87,7 @@ export const fetchPoolsStakingLimits = async (
   poolsWithStakingLimit: number[],
 ): Promise<{ [key: string]: BigNumber }> => {
   const validPools = poolsConfig
-    .filter((p) => p.stakingToken.symbol !== 'BNB' && !p.isFinished)
+    .filter((p) => p.stakingToken.symbol !== 'MATIC' && !p.isFinished)
     .filter((p) => !poolsWithStakingLimit.includes(p.sousId))
 
   // Get the staking limit for each valid pool

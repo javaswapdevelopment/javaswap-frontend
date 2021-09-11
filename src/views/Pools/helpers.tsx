@@ -3,28 +3,28 @@ import { DeserializedPool } from 'state/types'
 import { getApy } from 'utils/compoundApyHelpers'
 import { getBalanceNumber, getFullDisplayBalance, getDecimalAmount } from 'utils/formatBalance'
 
-export const convertSharesToCake = (
+export const convertSharesToJava = (
   shares: BigNumber,
-  cakePerFullShare: BigNumber,
+  javaPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(cakePerFullShare, decimals)
-  const amountInCake = new BigNumber(shares.multipliedBy(sharePriceNumber))
-  const cakeAsNumberBalance = getBalanceNumber(amountInCake, decimals)
-  const cakeAsBigNumber = getDecimalAmount(new BigNumber(cakeAsNumberBalance), decimals)
-  const cakeAsDisplayBalance = getFullDisplayBalance(amountInCake, decimals, decimalsToRound)
-  return { cakeAsNumberBalance, cakeAsBigNumber, cakeAsDisplayBalance }
+  const sharePriceNumber = getBalanceNumber(javaPerFullShare, decimals)
+  const amountInJava = new BigNumber(shares.multipliedBy(sharePriceNumber))
+  const javaAsNumberBalance = getBalanceNumber(amountInJava, decimals)
+  const javaAsBigNumber = getDecimalAmount(new BigNumber(javaAsNumberBalance), decimals)
+  const javaAsDisplayBalance = getFullDisplayBalance(amountInJava, decimals, decimalsToRound)
+  return { javaAsNumberBalance, javaAsBigNumber, javaAsDisplayBalance }
 }
 
-export const convertCakeToShares = (
-  cake: BigNumber,
-  cakePerFullShare: BigNumber,
+export const convertJavaToShares = (
+  java: BigNumber,
+  javaPerFullShare: BigNumber,
   decimals = 18,
   decimalsToRound = 3,
 ) => {
-  const sharePriceNumber = getBalanceNumber(cakePerFullShare, decimals)
-  const amountInShares = new BigNumber(cake.dividedBy(sharePriceNumber))
+  const sharePriceNumber = getBalanceNumber(javaPerFullShare, decimals)
+  const amountInShares = new BigNumber(java.dividedBy(sharePriceNumber))
   const sharesAsNumberBalance = getBalanceNumber(amountInShares, decimals)
   const sharesAsBigNumber = getDecimalAmount(new BigNumber(sharesAsNumberBalance), decimals)
   const sharesAsDisplayBalance = getFullDisplayBalance(amountInShares, decimals, decimalsToRound)
@@ -47,22 +47,22 @@ export const getAprData = (pool: DeserializedPool, performanceFee: number) => {
   return { apr, autoCompoundFrequency }
 }
 
-export const getCakeVaultEarnings = (
+export const getJavaVaultEarnings = (
   account: string,
-  cakeAtLastUserAction: BigNumber,
+  javaAtLastUserAction: BigNumber,
   userShares: BigNumber,
   pricePerFullShare: BigNumber,
   earningTokenPrice: number,
 ) => {
   const hasAutoEarnings =
-    account && cakeAtLastUserAction && cakeAtLastUserAction.gt(0) && userShares && userShares.gt(0)
-  const { cakeAsBigNumber } = convertSharesToCake(userShares, pricePerFullShare)
-  const autoCakeProfit = cakeAsBigNumber.minus(cakeAtLastUserAction)
-  const autoCakeToDisplay = autoCakeProfit.gte(0) ? getBalanceNumber(autoCakeProfit, 18) : 0
+    account && javaAtLastUserAction && javaAtLastUserAction.gt(0) && userShares && userShares.gt(0)
+  const { javaAsBigNumber } = convertSharesToJava(userShares, pricePerFullShare)
+  const autoJavaProfit = javaAsBigNumber.minus(javaAtLastUserAction)
+  const autoJavaToDisplay = autoJavaProfit.gte(0) ? getBalanceNumber(autoJavaProfit, 18) : 0
 
-  const autoUsdProfit = autoCakeProfit.times(earningTokenPrice)
+  const autoUsdProfit = autoJavaProfit.times(earningTokenPrice)
   const autoUsdToDisplay = autoUsdProfit.gte(0) ? getBalanceNumber(autoUsdProfit, 18) : 0
-  return { hasAutoEarnings, autoCakeToDisplay, autoUsdToDisplay }
+  return { hasAutoEarnings, autoJavaToDisplay, autoUsdToDisplay }
 }
 
 export const getPoolBlockInfo = (pool: DeserializedPool, currentBlock: number) => {

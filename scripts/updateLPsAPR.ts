@@ -6,8 +6,8 @@ import chunk from 'lodash/chunk'
 import { sub, getUnixTime } from 'date-fns'
 import farmsConfig from '../src/config/constants/farms'
 
-const BLOCK_SUBGRAPH_ENDPOINT = 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks'
-const STREAMING_FAST_ENDPOINT = 'https://bsc.streamingfast.io/subgraphs/name/pancakeswap/exchange-v2'
+const BLOCK_SUBGRAPH_ENDPOINT = 'https://api.thegraph.com/subgraphs/name/javaswapdevelopment/blocks'
+const STREAMING_FAST_ENDPOINT = 'https://bsc.streamingfast.io/subgraphs/name/javaswap/exchange-v2'
 
 interface BlockResponse {
   blocks: {

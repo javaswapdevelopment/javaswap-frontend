@@ -16,8 +16,8 @@ import ExpertModal from './ExpertModal'
 import GasSettings from './GasSettings'
 
 // TODO: Temporary. Once uikit is merged with this style change, this can be removed.
-const PancakeToggleWrapper = styled.div`
-  .pancakes {
+const JavaToggleWrapper = styled.div`
+  .javas {
     position: absolute;
   }
 `
@@ -104,14 +104,14 @@ const SettingsModal: React.FC<InjectedModalProps> = ({ onDismiss }) => {
           <Flex alignItems="center">
             <Text>{t('Flippy sounds')}</Text>
             <QuestionHelper
-              text={t('Fun sounds to make a truly immersive pancake-flipping trading experience')}
+              text={t('Fun sounds to make a truly immersive java-flipping trading experience')}
               placement="top-start"
               ml="4px"
             />
           </Flex>
-          <PancakeToggleWrapper>
+          <JavaToggleWrapper>
             <JavaToggle checked={audioPlay} onChange={toggleSetAudioMode} scale="md" />
-          </PancakeToggleWrapper>
+          </JavaToggleWrapper>
         </Flex>
       </Flex>
     </Modal>

@@ -3,7 +3,7 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_pancakePrediction",
+        "name": "_javaPrediction",
         "type": "address"
       },
       {
@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfile",
+        "name": "_javaProfile",
         "type": "address"
       },
       {
@@ -318,10 +318,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakePrediction",
+    "name": "javaPrediction",
     "outputs": [
       {
-        "internalType": "contract BnbPricePrediction",
+        "internalType": "contract MaticPricePrediction",
         "name": "",
         "type": "address"
       }
@@ -331,10 +331,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "javaProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract JavaProfile",
         "name": "",
         "type": "address"
       }

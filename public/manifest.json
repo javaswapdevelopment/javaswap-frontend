@@ -1,8 +1,8 @@
 {
-  "short_name": "PancakeSwap",
-  "name": "PancakeSwap",
-  "description": "Farm CAKE with Pancake LP Tokens",
-  "homepage_url": "https://pancakeswap.finance",
+  "short_name": "JavaSwap",
+  "name": "JavaSwap",
+  "description": "Farm JAVA with Java LP Tokens",
+  "homepage_url": "https://javaswap.io",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#1FC7D4",

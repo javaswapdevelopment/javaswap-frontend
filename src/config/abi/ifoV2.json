@@ -13,7 +13,7 @@
       },
       {
         "internalType": "address",
-        "name": "_pancakeProfileAddress",
+        "name": "_javaProfileAddress",
         "type": "address"
       },
       {
@@ -283,10 +283,10 @@
   },
   {
     "inputs": [],
-    "name": "pancakeProfile",
+    "name": "javaProfile",
     "outputs": [
       {
-        "internalType": "contract PancakeProfile",
+        "internalType": "contract JavaProfile",
         "name": "",
         "type": "address"
       }

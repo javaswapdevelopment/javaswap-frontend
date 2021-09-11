@@ -14,8 +14,8 @@ import {
   useFetchPublicPoolsData,
   usePools,
   useFetchUserPools,
-  useFetchCakeVault,
-  useCakeVault,
+  useFetchJavaVault,
+  useJavaVault,
 } from 'state/pools/hooks'
 import { usePollFarmsPublicData } from 'state/farms/hooks'
 import { latinise } from 'utils/latinise'
@@ -29,12 +29,12 @@ import { useUserPoolStakedOnly, useUserPoolsViewMode } from 'state/user/hooks'
 import { ViewMode } from 'state/user/actions'
 import Loading from 'components/Loading'
 import PoolCard from './components/PoolCard'
-import CakeVaultCard from './components/CakeVaultCard'
+import JavaVaultCard from './components/JavaVaultCard'
 import PoolTabButtons from './components/PoolTabButtons'
 import BountyCard from './components/BountyCard'
 import HelpButton from './components/HelpButton'
 import PoolsTable from './components/PoolsTable/PoolsTable'
-import { getAprData, getCakeVaultEarnings } from './helpers'
+import { getAprData, getJavaVaultEarnings } from './helpers'
 
 const CardLayout = styled(FlexLayout)`
   justify-content: center;
@@ -97,18 +97,18 @@ const Pools: React.FC = () => {
   const [sortOption, setSortOption] = useState('hot')
   const chosenPoolsLength = useRef(0)
   const {
-    userData: { cakeAtLastUserAction, userShares },
+    userData: { javaAtLastUserAction, userShares },
     fees: { performanceFee },
     pricePerFullShare,
-    totalCakeInVault,
-  } = useCakeVault()
+    totalJavaInVault,
+  } = useJavaVault()
   const accountHasVaultShares = userShares && userShares.gt(0)
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
 
   const pools = useMemo(() => {
-    const cakePool = poolsWithoutAutoVault.find((pool) => pool.sousId === 0)
-    const cakeAutoVault = { ...cakePool, isAutoVault: true }
-    return [cakeAutoVault, ...poolsWithoutAutoVault]
+    const javaPool = poolsWithoutAutoVault.find((pool) => pool.sousId === 0)
+    const javaAutoVault = { ...javaPool, isAutoVault: true }
+    return [javaAutoVault, ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault])
 
   // TODO aren't arrays in dep array checked just by reference, i.e. it will rerender every time reference changes?
@@ -136,7 +136,7 @@ const Pools: React.FC = () => {
   const hasStakeInFinishedPools = stakedOnlyFinishedPools.length > 0
 
   usePollFarmsPublicData()
-  useFetchCakeVault()
+  useFetchJavaVault()
   useFetchPublicPoolsData()
   useFetchUserPools(account)
 
@@ -178,9 +178,9 @@ const Pools: React.FC = () => {
               return 0
             }
             return pool.isAutoVault
-              ? getCakeVaultEarnings(
+              ? getJavaVaultEarnings(
                   account,
-                  cakeAtLastUserAction,
+                  javaAtLastUserAction,
                   userShares,
                   pricePerFullShare,
                   pool.earningTokenPrice,
@@ -195,18 +195,18 @@ const Pools: React.FC = () => {
           (pool: DeserializedPool) => {
             let totalStaked = Number.NaN
             if (pool.isAutoVault) {
-              if (totalCakeInVault.isFinite()) {
+              if (totalJavaInVault.isFinite()) {
                 totalStaked = +formatUnits(
-                  ethers.BigNumber.from(totalCakeInVault.toString()),
+                  ethers.BigNumber.from(totalJavaInVault.toString()),
                   pool.stakingToken.decimals,
                 )
               }
             } else if (pool.sousId === 0) {
-              if (pool.totalStaked?.isFinite() && totalCakeInVault.isFinite()) {
-                const manualCakeTotalMinusAutoVault = ethers.BigNumber.from(pool.totalStaked.toString()).sub(
-                  totalCakeInVault.toString(),
+              if (pool.totalStaked?.isFinite() && totalJavaInVault.isFinite()) {
+                const manualJavaTotalMinusAutoVault = ethers.BigNumber.from(pool.totalStaked.toString()).sub(
+                  totalJavaInVault.toString(),
                 )
-                totalStaked = +formatUnits(manualCakeTotalMinusAutoVault, pool.stakingToken.decimals)
+                totalStaked = +formatUnits(manualJavaTotalMinusAutoVault, pool.stakingToken.decimals)
               }
             } else if (pool.totalStaked?.isFinite()) {
               totalStaked = +formatUnits(ethers.BigNumber.from(pool.totalStaked.toString()), pool.stakingToken.decimals)
@@ -241,7 +241,7 @@ const Pools: React.FC = () => {
     <CardLayout>
       {chosenPools.map((pool) =>
         pool.isAutoVault ? (
-          <CakeVaultCard key="auto-cake" pool={pool} showStakedOnly={stakedOnly} />
+          <JavaVaultCard key="auto-java" pool={pool} showStakedOnly={stakedOnly} />
         ) : (
           <PoolCard key={pool.sousId} pool={pool} account={account} />
         ),
@@ -257,7 +257,7 @@ const Pools: React.FC = () => {
         <Flex justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
           <Flex flex="1" flexDirection="column" mr={['8px', 0]}>
             <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-              {t('Syrup Pools')}
+              {t('Espresso Pools')}
             </Heading>
             <Heading scale="md" color="text">
               {t('Just stake some tokens to earn.')}
@@ -333,8 +333,8 @@ const Pools: React.FC = () => {
         <Image
           mx="auto"
           mt="12px"
-          src="/images/decorations/3d-syrup-bunnies.png"
-          alt="Pancake illustration"
+          src="/images/decorations/3d-espresso-bunnies.png"
+          alt="Java illustration"
           width={192}
           height={184.5}
         />

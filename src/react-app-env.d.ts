@@ -6,7 +6,7 @@ interface Window {
     request?: (...args: any[]) => Promise<void>
   }
   BinanceChain?: {
-    bnbSign?: (address: string, message: string) => Promise<{ publicKey: string; signature: string }>
+    maticSign?: (address: string, message: string) => Promise<{ publicKey: string; signature: string }>
   }
 }
 

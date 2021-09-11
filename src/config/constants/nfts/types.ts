@@ -1,7 +1,7 @@
 import { Address, Images } from '../types'
 
 export enum CollectionKey {
-  PANCAKE = 'pancake',
+  JAVA = 'java',
 }
 
 type Collection = {

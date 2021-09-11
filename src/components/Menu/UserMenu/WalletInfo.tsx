@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box, Button, Flex, InjectedModalProps, LinkExternal, Message, Skeleton, Text } from '@javaswap/uikit'
 import { useWeb3React } from '@web3-react/core'
-import useTokenBalance, { FetchStatus, useGetBnbBalance } from 'hooks/useTokenBalance'
+import useTokenBalance, { FetchStatus, useGetMaticBalance } from 'hooks/useTokenBalance'
 import useAuth from 'hooks/useAuth'
 import { useTranslation } from 'contexts/Localization'
 import { getBscScanLink } from 'utils'
@@ -10,15 +10,15 @@ import tokens from 'config/constants/tokens'
 import CopyAddress from './CopyAddress'
 
 interface WalletInfoProps {
-  hasLowBnbBalance: boolean
+  hasLowMaticBalance: boolean
   onDismiss: InjectedModalProps['onDismiss']
 }
 
-const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowBnbBalance, onDismiss }) => {
+const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowMaticBalance, onDismiss }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const { balance, fetchStatus } = useGetBnbBalance()
-  const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useTokenBalance(tokens.cake.address)
+  const { balance, fetchStatus } = useGetMaticBalance()
+  const { balance: javaBalance, fetchStatus: javaFetchStatus } = useTokenBalance(tokens.java.address)
   const { logout } = useAuth()
 
   const handleLogout = () => {
@@ -32,16 +32,16 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowBnbBalance, onDismiss }) 
         {t('Your Address')}
       </Text>
       <CopyAddress account={account} mb="24px" />
-      {hasLowBnbBalance && (
+      {hasLowMaticBalance && (
         <Message variant="warning" mb="24px">
           <Box>
-            <Text fontWeight="bold">{t('BNB Balance Low')}</Text>
-            <Text as="p">{t('You need BNB for transaction fees.')}</Text>
+            <Text fontWeight="bold">{t('MATIC Balance Low')}</Text>
+            <Text as="p">{t('You need MATIC for transaction fees.')}</Text>
           </Box>
         </Message>
       )}
       <Flex alignItems="center" justifyContent="space-between">
-        <Text color="textSubtle">{t('BNB Balance')}</Text>
+        <Text color="textSubtle">{t('MATIC Balance')}</Text>
         {fetchStatus !== FetchStatus.SUCCESS ? (
           <Skeleton height="22px" width="60px" />
         ) : (
@@ -49,11 +49,11 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowBnbBalance, onDismiss }) 
         )}
       </Flex>
       <Flex alignItems="center" justifyContent="space-between" mb="24px">
-        <Text color="textSubtle">{t('CAKE Balance')}</Text>
-        {cakeFetchStatus !== FetchStatus.SUCCESS ? (
+        <Text color="textSubtle">{t('JAVA Balance')}</Text>
+        {javaFetchStatus !== FetchStatus.SUCCESS ? (
           <Skeleton height="22px" width="60px" />
         ) : (
-          <Text>{getFullDisplayBalance(cakeBalance, 18, 3)}</Text>
+          <Text>{getFullDisplayBalance(javaBalance, 18, 3)}</Text>
         )}
       </Flex>
       <Flex alignItems="center" justifyContent="end" mb="24px">

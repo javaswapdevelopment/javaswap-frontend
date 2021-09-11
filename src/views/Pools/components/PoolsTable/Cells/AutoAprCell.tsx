@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { Text, useMatchBreakpoints } from '@javaswap/uikit'
 import { DeserializedPool } from 'state/types'
-import { useCakeVault } from 'state/pools/hooks'
+import { useJavaVault } from 'state/pools/hooks'
 import { useTranslation } from 'contexts/Localization'
 import BaseCell, { CellContent } from './BaseCell'
 import Apr from '../Apr'
-import { convertSharesToCake } from '../../../helpers'
+import { convertSharesToJava } from '../../../helpers'
 
 interface AprCellProps {
   pool: DeserializedPool
@@ -27,9 +27,9 @@ const AutoAprCell: React.FC<AprCellProps> = ({ pool }) => {
     userData: { userShares },
     fees: { performanceFee },
     pricePerFullShare,
-  } = useCakeVault()
+  } = useJavaVault()
 
-  const { cakeAsBigNumber } = convertSharesToCake(userShares, pricePerFullShare)
+  const { javaAsBigNumber } = convertSharesToJava(userShares, pricePerFullShare)
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
 
   return (
@@ -40,7 +40,7 @@ const AutoAprCell: React.FC<AprCellProps> = ({ pool }) => {
         </Text>
         <Apr
           pool={pool}
-          stakedBalance={cakeAsBigNumber}
+          stakedBalance={javaAsBigNumber}
           performanceFee={performanceFeeAsDecimal}
           showIcon={!isMobile}
         />
