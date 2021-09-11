@@ -74,15 +74,15 @@ export const usePollFarmsWithUserData = (includeArchive = false) => {
 
 /**
  * Fetches the "core" farm data used globally
- * 251 = JAVA-MATIC LP
- * 252 = BUSD-MATIC LP
+ * 2 = JAVA-MATIC LP
+ * 3 = BUSD-MATIC LP
  */
 export const usePollCoreFarmData = () => {
   const dispatch = useAppDispatch()
   const { fastRefresh } = useRefresh()
 
   useEffect(() => {
-    dispatch(fetchFarmsPublicDataAsync([251, 252]))
+    dispatch(fetchFarmsPublicDataAsync([2, 3]))
   }, [dispatch, fastRefresh])
 }
 
@@ -145,7 +145,7 @@ export const useLpTokenPrice = (symbol: string) => {
 // /!\ Deprecated , use the BUSD hook in /hooks
 
 export const usePriceJavaBusd = (): BigNumber => {
-  const javaMaticFarm = useFarmFromPid(251)
+  const javaMaticFarm = useFarmFromPid(2)
 
   const javaPriceBusdAsString = javaMaticFarm.tokenPriceBusd
 

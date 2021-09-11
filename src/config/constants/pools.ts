@@ -9,8 +9,8 @@ const pools: SerializedPoolConfig[] = [
     stakingToken: serializedTokens.java,
     earningToken: serializedTokens.java,
     contractAddress: {
-      80001: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
-      137: '0x73feaa1eE314F8c655E354234017bE2193C9E24E',
+      80001: '',
+      137: '0x43E89b80f6EcFe3fAdFCbd83bE1097cd7C92C23d',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
