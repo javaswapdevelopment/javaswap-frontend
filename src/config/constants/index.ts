@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token } from '@javaswap/sdk'
 import { mainnetTokens, testnetTokens } from './tokens'
 
-export const ROUTER_ADDRESS = '0x13ecb4f7005188a3fD6592040db5E73f1D5cbF49'
+export const ROUTER_ADDRESS = '0xb82793d68F005262112ea4C9623F06C34Cbe123C'
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -13,9 +13,9 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   [ChainId.MAINNET]: [
     mainnetTokens.wmatic,
     mainnetTokens.java,
-    mainnetTokens.busd,
+    mainnetTokens.usdc,
   ],
-  [ChainId.TESTNET]: [testnetTokens.wmatic, testnetTokens.java, testnetTokens.busd],
+  [ChainId.TESTNET]: [testnetTokens.wmatic, testnetTokens.java, testnetTokens.usdc],
 }
 
 /**
@@ -37,14 +37,14 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
-  [ChainId.MAINNET]: [mainnetTokens.busd, mainnetTokens.java],
-  [ChainId.TESTNET]: [testnetTokens.wmatic, testnetTokens.java, testnetTokens.busd],
+  [ChainId.MAINNET]: [mainnetTokens.usdc, mainnetTokens.java],
+  [ChainId.TESTNET]: [testnetTokens.wmatic, testnetTokens.java, testnetTokens.usdc],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
-  [ChainId.MAINNET]: [mainnetTokens.wmatic, mainnetTokens.busd],
-  [ChainId.TESTNET]: [testnetTokens.wmatic, testnetTokens.java, testnetTokens.busd],
+  [ChainId.MAINNET]: [mainnetTokens.wmatic, mainnetTokens.usdc],
+  [ChainId.TESTNET]: [testnetTokens.wmatic, testnetTokens.java, testnetTokens.usdc],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

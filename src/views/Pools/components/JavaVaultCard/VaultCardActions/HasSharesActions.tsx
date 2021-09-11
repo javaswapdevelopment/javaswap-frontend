@@ -3,7 +3,7 @@ import { Flex, Text, IconButton, AddIcon, MinusIcon, useModal, Skeleton } from '
 import BigNumber from 'bignumber.js'
 import { getBalanceNumber } from 'utils/formatBalance'
 import { DeserializedPool } from 'state/types'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import { useJavaVault } from 'state/pools/hooks'
 import Balance from 'components/Balance'
 import NotEnoughTokensModal from '../../PoolCard/Modals/NotEnoughTokensModal'
@@ -23,9 +23,9 @@ const HasSharesActions: React.FC<HasStakeActionProps> = ({ pool, stakingTokenBal
   } = useJavaVault()
   const { stakingToken } = pool
   const { javaAsBigNumber, javaAsNumberBalance } = convertSharesToJava(userShares, pricePerFullShare)
-  const javaPriceBusd = usePriceJavaBusd()
-  const stakedDollarValue = javaPriceBusd.gt(0)
-    ? getBalanceNumber(javaAsBigNumber.multipliedBy(javaPriceBusd), stakingToken.decimals)
+  const javaPriceUsdc = usePriceJavaUsdc()
+  const stakedDollarValue = javaPriceUsdc.gt(0)
+    ? getBalanceNumber(javaAsBigNumber.multipliedBy(javaPriceUsdc), stakingToken.decimals)
     : 0
 
   const [onPresentTokenRequired] = useModal(<NotEnoughTokensModal tokenSymbol={stakingToken.symbol} />)
@@ -39,7 +39,7 @@ const HasSharesActions: React.FC<HasStakeActionProps> = ({ pool, stakingTokenBal
       <Flex flexDirection="column">
         <Balance fontSize="20px" bold value={javaAsNumberBalance} decimals={5} />
         <Text fontSize="12px" color="textSubtle">
-          {javaPriceBusd.gt(0) ? (
+          {javaPriceUsdc.gt(0) ? (
             <Balance value={stakedDollarValue} fontSize="12px" color="textSubtle" decimals={2} prefix="~" unit=" USD" />
           ) : (
             <Skeleton mt="1px" height={16} width={64} />

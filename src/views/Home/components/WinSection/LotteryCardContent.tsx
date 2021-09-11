@@ -3,7 +3,7 @@ import { Flex, Text, Skeleton, Link, Button, ArrowForwardIcon } from '@javaswap/
 import { useTranslation } from 'contexts/Localization'
 import useRefresh from 'hooks/useRefresh'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import Balance from 'components/Balance'
 import styled from 'styled-components'
 import { fetchCurrentLotteryIdAndMaxBuy, fetchLottery } from 'state/lottery/helpers'
@@ -27,14 +27,14 @@ const LotteryCardContent = () => {
   const { slowRefresh } = useRefresh()
   const [lotteryId, setLotteryId] = useState<string>(null)
   const [currentLotteryPrize, setCurrentLotteryPrize] = useState<BigNumber>(null)
-  const javaPriceBusdAsString = usePriceJavaBusd().toString()
+  const javaPriceUsdcAsString = usePriceJavaUsdc().toString()
 
-  const javaPrizesText = t('%javaPrizeInUsd% in JAVA prizes this round', { javaPrizeInUsd: javaPriceBusdAsString })
-  const [pretext, prizesThisRound] = javaPrizesText.split(javaPriceBusdAsString)
+  const javaPrizesText = t('%javaPrizeInUsd% in JAVA prizes this round', { javaPrizeInUsd: javaPriceUsdcAsString })
+  const [pretext, prizesThisRound] = javaPrizesText.split(javaPriceUsdcAsString)
 
-  const javaPriceBusd = useMemo(() => {
-    return new BigNumber(javaPriceBusdAsString)
-  }, [javaPriceBusdAsString])
+  const javaPriceUsdc = useMemo(() => {
+    return new BigNumber(javaPriceUsdcAsString)
+  }, [javaPriceUsdcAsString])
 
   useEffect(() => {
     if (isIntersecting) {
@@ -58,14 +58,14 @@ const LotteryCardContent = () => {
     // get public data for current lottery
     const fetchCurrentLotteryPrize = async () => {
       const { amountCollectedInJava } = await fetchLottery(lotteryId)
-      const prizeInBusd = javaPriceBusd.times(amountCollectedInJava)
-      setCurrentLotteryPrize(prizeInBusd)
+      const prizeInUsdc = javaPriceUsdc.times(amountCollectedInJava)
+      setCurrentLotteryPrize(prizeInUsdc)
     }
 
     if (lotteryId) {
       fetchCurrentLotteryPrize()
     }
-  }, [lotteryId, slowRefresh, setCurrentLotteryPrize, javaPriceBusd])
+  }, [lotteryId, slowRefresh, setCurrentLotteryPrize, javaPriceUsdc])
 
   return (
     <>

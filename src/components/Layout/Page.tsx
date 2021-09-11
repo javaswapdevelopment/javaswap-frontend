@@ -4,7 +4,7 @@ import { useTranslation } from 'contexts/Localization'
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router'
 import { DEFAULT_META, getCustomMeta } from 'config/constants/meta'
-import { useJavaBusdPrice } from 'hooks/useBUSDPrice'
+import { useJavaUsdcPrice } from 'hooks/useUSDCPrice'
 import Container from './Container'
 
 const StyledPage = styled(Container)`
@@ -26,7 +26,7 @@ const StyledPage = styled(Container)`
 export const PageMeta: React.FC<{ symbol?: string }> = ({ symbol }) => {
   const { t } = useTranslation()
   const { pathname } = useLocation()
-  const javaPriceUsd = useJavaBusdPrice()
+  const javaPriceUsd = useJavaUsdcPrice()
   const javaPriceUsdDisplay = javaPriceUsd ? `$${javaPriceUsd.toFixed(3)}` : '...'
 
   const pageMeta = getCustomMeta(pathname, t) || {}

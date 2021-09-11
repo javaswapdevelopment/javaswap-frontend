@@ -39,8 +39,8 @@ export interface DeserializedFarmUserData {
 }
 
 export interface SerializedFarm extends SerializedFarmConfig {
-  tokenPriceBusd?: string
-  quoteTokenPriceBusd?: string
+  tokenPriceUsdc?: string
+  quoteTokenPriceUsdc?: string
   tokenAmountTotal?: SerializedBigNumber
   lpTotalInQuoteToken?: SerializedBigNumber
   lpTotalSupply?: SerializedBigNumber
@@ -50,8 +50,8 @@ export interface SerializedFarm extends SerializedFarmConfig {
 }
 
 export interface DeserializedFarm extends DeserializedFarmConfig {
-  tokenPriceBusd?: string
-  quoteTokenPriceBusd?: string
+  tokenPriceUsdc?: string
+  quoteTokenPriceUsdc?: string
   tokenAmountTotal?: BigNumber
   lpTotalInQuoteToken?: BigNumber
   lpTotalSupply?: BigNumber

@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import { useAppDispatch } from 'state'
 import { orderBy } from 'lodash'
 import { DeserializedPool } from 'state/types'
@@ -33,7 +33,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
     return [javaAutoVaultWithApr, ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault, performanceFeeAsDecimal])
 
-  const javaPriceBusd = usePriceJavaBusd()
+  const javaPriceUsdc = usePriceJavaUsdc()
 
   useEffect(() => {
     const fetchPoolsPublicData = async () => {
@@ -63,7 +63,7 @@ const useGetTopPoolsByApr = (isIntersecting: boolean) => {
     if (fetchStatus === FetchStatus.SUCCESS && !topPools[0]) {
       getTopPoolsByApr(pools)
     }
-  }, [setTopPools, pools, fetchStatus, javaPriceBusd, topPools, performanceFeeAsDecimal])
+  }, [setTopPools, pools, fetchStatus, javaPriceUsdc, topPools, performanceFeeAsDecimal])
 
   return { topPools }
 }

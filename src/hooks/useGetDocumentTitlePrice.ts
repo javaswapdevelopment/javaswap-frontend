@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
-import { useJavaBusdPrice } from 'hooks/useBUSDPrice'
+import { useJavaUsdcPrice } from 'hooks/useUSDCPrice'
 
 const useGetDocumentTitlePrice = () => {
-  const javaPriceBusd = useJavaBusdPrice()
+  const javaPriceUsdc = useJavaUsdcPrice()
   useEffect(() => {
-    const javaPriceBusdString = javaPriceBusd ? javaPriceBusd.toFixed(2) : ''
-    document.title = `Java Swap - ${javaPriceBusdString}`
-  }, [javaPriceBusd])
+    const javaPriceUsdcString = javaPriceUsdc ? javaPriceUsdc.toFixed(2) : ''
+    document.title = `Java Swap - ${javaPriceUsdcString}`
+  }, [javaPriceUsdc])
 }
 export default useGetDocumentTitlePrice

@@ -2,7 +2,7 @@ describe('Add Liquidity', () => {
   it('loads the two correct tokens', () => {
     cy.visit('/add/0xAFC9AA5ebd7197662D869F75890F18AafEEFb1f5/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174')
     cy.get('#add-liquidity-input-tokena').should('contain.text', 'JAVA')
-    cy.get('#add-liquidity-input-tokenb').should('contain.text', 'BUSD')
+    cy.get('#add-liquidity-input-tokenb').should('contain.text', 'USDC')
   })
 
   it('loads the MATIC and tokens', () => {
@@ -39,7 +39,7 @@ describe('Add Liquidity', () => {
     cy.visit('/add/0xD74b782E05AA25c50e7330Af541d46E18f36661C')
     cy.get('#add-liquidity-input-tokena').should('contain.text', 'QUACK')
     cy.visit('/add/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174')
-    cy.get('#add-liquidity-input-tokena').should('contain.text', 'BUSD')
+    cy.get('#add-liquidity-input-tokena').should('contain.text', 'USDC')
     cy.visit('/add/MATIC')
     cy.get('#add-liquidity-input-tokena').should('contain.text', 'MATIC')
   })

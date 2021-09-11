@@ -22,7 +22,7 @@ describe('Remove Liquidity', () => {
   it('loads the two correct tokens', () => {
     cy.visit('/remove/0xAFC9AA5ebd7197662D869F75890F18AafEEFb1f5/0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174')
     cy.get('#remove-liquidity-tokena-symbol').should('contain.text', 'JAVA')
-    cy.get('#remove-liquidity-tokenb-symbol').should('contain.text', 'BUSD')
+    cy.get('#remove-liquidity-tokenb-symbol').should('contain.text', 'USDC')
   })
 
   it('does not crash if MATIC is duplicated', () => {

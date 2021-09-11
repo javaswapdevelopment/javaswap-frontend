@@ -20,7 +20,7 @@ import tokens from 'config/constants/tokens'
 import { getFullDisplayBalance } from 'utils/formatBalance'
 import { BIG_ZERO, ethersToBigNumber } from 'utils/bigNumber'
 import { useAppDispatch } from 'state'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import { useLottery } from 'state/lottery/hooks'
 import { fetchUserTicketsAndLotteries } from 'state/lottery'
 import useTheme from 'hooks/useTheme'
@@ -87,7 +87,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
   const stringifiedUserJava = userJava.toJSON()
   const memoisedUserJava = useMemo(() => new BigNumber(stringifiedUserJava), [stringifiedUserJava])
 
-  const javaPriceBusd = usePriceJavaBusd()
+  const javaPriceUsdc = usePriceJavaUsdc()
   const dispatch = useAppDispatch()
   const hasFetchedBalance = fetchStatus === FetchStatus.SUCCESS
   const userJavaDisplayBalance = getFullDisplayBalance(userJava, 18, 3)
@@ -325,7 +325,7 @@ const BuyTicketsModal: React.FC<BuyTicketsModalProps> = ({ onDismiss }) => {
         value={ticketsToBuy}
         onUserInput={handleInputChange}
         currencyValue={
-          javaPriceBusd.gt(0) &&
+          javaPriceUsdc.gt(0) &&
           `~${ticketsToBuy ? getFullDisplayBalance(priceTicketInJava.times(new BigNumber(ticketsToBuy))) : '0.00'} JAVA`
         }
       />

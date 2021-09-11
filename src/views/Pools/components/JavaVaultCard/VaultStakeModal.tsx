@@ -16,7 +16,7 @@ import { useTranslation } from 'contexts/Localization'
 import { useWeb3React } from '@web3-react/core'
 import { useAppDispatch } from 'state'
 import { BIG_TEN } from 'utils/bigNumber'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import { useJavaVault } from 'state/pools/hooks'
 import { useJavaVaultContract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
@@ -85,9 +85,9 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({
   const [percent, setPercent] = useState(0)
   const [showRoiCalculator, setShowRoiCalculator] = useState(false)
   const { hasUnstakingFee } = useWithdrawalFeeTimer(parseInt(lastDepositedTime, 10), userShares)
-  const javaPriceBusd = usePriceJavaBusd()
-  const usdValueStaked = new BigNumber(stakeAmount).times(javaPriceBusd)
-  const formattedUsdValueStaked = javaPriceBusd.gt(0) && stakeAmount ? formatNumber(usdValueStaked.toNumber()) : ''
+  const javaPriceUsdc = usePriceJavaUsdc()
+  const usdValueStaked = new BigNumber(stakeAmount).times(javaPriceUsdc)
+  const formattedUsdValueStaked = javaPriceUsdc.gt(0) && stakeAmount ? formatNumber(usdValueStaked.toNumber()) : ''
 
   const { javaAsBigNumber } = convertSharesToJava(userShares, pricePerFullShare)
 
@@ -251,7 +251,7 @@ const VaultStakeModal: React.FC<VaultStakeModalProps> = ({
       <BalanceInput
         value={stakeAmount}
         onUserInput={handleStakeInputChange}
-        currencyValue={javaPriceBusd.gt(0) && `~${formattedUsdValueStaked || 0} USD`}
+        currencyValue={javaPriceUsdc.gt(0) && `~${formattedUsdValueStaked || 0} USD`}
         decimals={stakingToken.decimals}
       />
       <Text mt="8px" ml="auto" color="textSubtle" fontSize="12px" mb="8px">

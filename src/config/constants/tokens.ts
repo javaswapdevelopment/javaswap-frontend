@@ -31,13 +31,13 @@ export const mainnetTokens = {
     'JavaSwap Token',
     'https://javaswap.io/',
   ),
-  busd: new Token(
+  usdc: new Token(
     MAINNET,
     '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174',
-    18,
-    'BUSD',
-    'Binance USD',
-    'https://www.paxos.com/busd/',
+    6,
+    'USDC',
+    'USDC Coin',
+    'https://www.circle.com/en/usdc',
   ),
   espresso: new Token(
     MAINNET,
@@ -66,13 +66,13 @@ export const testnetTokens = {
     'JavaSwap Token',
     'https://javaswap.io/',
   ),
-  busd: new Token(
+  usdc: new Token(
     TESTNET,
     '0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee',
-    18,
-    'BUSD',
+    6,
+    'USDC',
     'Binance USD',
-    'https://www.paxos.com/busd/',
+    'https://www.paxos.com/usdc/',
   ),
   espresso: new Token(
     TESTNET,

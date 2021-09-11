@@ -2,7 +2,7 @@ import React from 'react'
 import BigNumber from 'bignumber.js'
 import { Flex, Skeleton, Text } from '@javaswap/uikit'
 import { useTranslation } from 'contexts/Localization'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import Balance from 'components/Balance'
 import { getBalanceNumber, getFullDisplayBalance } from 'utils/formatBalance'
 
@@ -24,7 +24,7 @@ const RewardBracketDetail: React.FC<RewardBracketDetailProps> = ({
   isLoading,
 }) => {
   const { t } = useTranslation()
-  const javaPriceBusd = usePriceJavaBusd()
+  const javaPriceUsdc = usePriceJavaUsdc()
 
   const getRewardText = () => {
     const numberMatch = rewardBracket + 1
@@ -61,7 +61,7 @@ const RewardBracketDetail: React.FC<RewardBracketDetailProps> = ({
             fontSize="12px"
             color="textSubtle"
             prefix="~$"
-            value={getBalanceNumber(javaAmount.times(javaPriceBusd))}
+            value={getBalanceNumber(javaAmount.times(javaPriceUsdc))}
             decimals={0}
           />
         )}

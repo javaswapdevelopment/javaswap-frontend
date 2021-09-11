@@ -17,57 +17,57 @@ const getFarmFromTokenSymbol = (
 const getFarmBaseTokenPrice = (
   farm: SerializedFarm,
   quoteTokenFarm: SerializedFarm,
-  maticPriceBusd: BigNumber,
+  maticPriceUsdc: BigNumber,
 ): BigNumber => {
   const hasTokenPriceVsQuote = Boolean(farm.tokenPriceVsQuote)
 
-  if (farm.quoteToken.symbol === tokens.busd.symbol) {
+  if (farm.quoteToken.symbol === tokens.usdc.symbol) {
     return hasTokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : BIG_ZERO
   }
 
   if (farm.quoteToken.symbol === tokens.wmatic.symbol) {
-    return hasTokenPriceVsQuote ? maticPriceBusd.times(farm.tokenPriceVsQuote) : BIG_ZERO
+    return hasTokenPriceVsQuote ? maticPriceUsdc.times(farm.tokenPriceVsQuote) : BIG_ZERO
   }
 
-  // We can only calculate profits without a quoteTokenFarm for BUSD/MATIC farms
+  // We can only calculate profits without a quoteTokenFarm for USDC/MATIC farms
   if (!quoteTokenFarm) {
     return BIG_ZERO
   }
 
   // Possible alternative farm quoteTokens:
   // UST (i.e. MIR-UST), pBTC (i.e. PNT-pBTC), BTCB (i.e. bBADGER-BTCB), ETH (i.e. SUSHI-ETH)
-  // If the farm's quote token isn't BUSD or WMATIC, we then use the quote token, of the original farm's quote token
+  // If the farm's quote token isn't USDC or WMATIC, we then use the quote token, of the original farm's quote token
   // i.e. for farm PNT - pBTC we use the pBTC farm's quote token - MATIC, (pBTC - MATIC)
-  // from the MATIC - pBTC price, we can calculate the PNT - BUSD price
+  // from the MATIC - pBTC price, we can calculate the PNT - USDC price
   if (quoteTokenFarm.quoteToken.symbol === tokens.wmatic.symbol) {
-    const quoteTokenInBusd = maticPriceBusd.times(quoteTokenFarm.tokenPriceVsQuote)
-    return hasTokenPriceVsQuote && quoteTokenInBusd
-      ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInBusd)
+    const quoteTokenInUsdc = maticPriceUsdc.times(quoteTokenFarm.tokenPriceVsQuote)
+    return hasTokenPriceVsQuote && quoteTokenInUsdc
+      ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInUsdc)
       : BIG_ZERO
   }
 
-  if (quoteTokenFarm.quoteToken.symbol === tokens.busd.symbol) {
-    const quoteTokenInBusd = quoteTokenFarm.tokenPriceVsQuote
-    return hasTokenPriceVsQuote && quoteTokenInBusd
-      ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInBusd)
+  if (quoteTokenFarm.quoteToken.symbol === tokens.usdc.symbol) {
+    const quoteTokenInUsdc = quoteTokenFarm.tokenPriceVsQuote
+    return hasTokenPriceVsQuote && quoteTokenInUsdc
+      ? new BigNumber(farm.tokenPriceVsQuote).times(quoteTokenInUsdc)
       : BIG_ZERO
   }
 
-  // Catch in case token does not have immediate or once-removed BUSD/WMATIC quoteToken
+  // Catch in case token does not have immediate or once-removed USDC/WMATIC quoteToken
   return BIG_ZERO
 }
 
 const getFarmQuoteTokenPrice = (
   farm: SerializedFarm,
   quoteTokenFarm: SerializedFarm,
-  maticPriceBusd: BigNumber,
+  maticPriceUsdc: BigNumber,
 ): BigNumber => {
-  if (farm.quoteToken.symbol === 'BUSD') {
+  if (farm.quoteToken.symbol === 'USDC') {
     return BIG_ONE
   }
 
   if (farm.quoteToken.symbol === 'WMATIC') {
-    return maticPriceBusd
+    return maticPriceUsdc
   }
 
   if (!quoteTokenFarm) {
@@ -75,10 +75,10 @@ const getFarmQuoteTokenPrice = (
   }
 
   if (quoteTokenFarm.quoteToken.symbol === 'WMATIC') {
-    return quoteTokenFarm.tokenPriceVsQuote ? maticPriceBusd.times(quoteTokenFarm.tokenPriceVsQuote) : BIG_ZERO
+    return quoteTokenFarm.tokenPriceVsQuote ? maticPriceUsdc.times(quoteTokenFarm.tokenPriceVsQuote) : BIG_ZERO
   }
 
-  if (quoteTokenFarm.quoteToken.symbol === 'BUSD') {
+  if (quoteTokenFarm.quoteToken.symbol === 'USDC') {
     return quoteTokenFarm.tokenPriceVsQuote ? new BigNumber(quoteTokenFarm.tokenPriceVsQuote) : BIG_ZERO
   }
 
@@ -86,18 +86,18 @@ const getFarmQuoteTokenPrice = (
 }
 
 const fetchFarmsPrices = async (farms: SerializedFarm[]) => {
-  const maticBusdFarm = farms.find((farm) => farm.pid === 252)
-  const maticPriceBusd = maticBusdFarm.tokenPriceVsQuote ? BIG_ONE.div(maticBusdFarm.tokenPriceVsQuote) : BIG_ZERO
+  const maticUsdcFarm = farms.find((farm) => farm.pid === 252)
+  const maticPriceUsdc = maticUsdcFarm.tokenPriceVsQuote ? BIG_ONE.div(maticUsdcFarm.tokenPriceVsQuote) : BIG_ZERO
 
   const farmsWithPrices = farms.map((farm) => {
     const quoteTokenFarm = getFarmFromTokenSymbol(farms, farm.quoteToken.symbol)
-    const tokenPriceBusd = getFarmBaseTokenPrice(farm, quoteTokenFarm, maticPriceBusd)
-    const quoteTokenPriceBusd = getFarmQuoteTokenPrice(farm, quoteTokenFarm, maticPriceBusd)
+    const tokenPriceUsdc = getFarmBaseTokenPrice(farm, quoteTokenFarm, maticPriceUsdc)
+    const quoteTokenPriceUsdc = getFarmQuoteTokenPrice(farm, quoteTokenFarm, maticPriceUsdc)
 
     return {
       ...farm,
-      tokenPriceBusd: tokenPriceBusd.toJSON(),
-      quoteTokenPriceBusd: quoteTokenPriceBusd.toJSON(),
+      tokenPriceUsdc: tokenPriceUsdc.toJSON(),
+      quoteTokenPriceUsdc: quoteTokenPriceUsdc.toJSON(),
     }
   })
 

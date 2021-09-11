@@ -3,14 +3,14 @@ import { Menu as UikitMenu } from '@javaswap/uikit'
 import { languageList } from 'config/localization/languages'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import config from './config'
 import UserMenu from './UserMenu'
 import GlobalSettings from './GlobalSettings'
 
 const Menu = (props) => {
   const { isDark, toggleTheme } = useTheme()
-  const javaPriceUsd = usePriceJavaBusd()
+  const javaPriceUsd = usePriceJavaUsdc()
   const { currentLanguage, setLanguage, t } = useTranslation()
 
   return (

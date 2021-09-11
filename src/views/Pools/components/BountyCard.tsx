@@ -16,7 +16,7 @@ import {
 } from '@javaswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import { useJavaVault } from 'state/pools/hooks'
 import Balance from 'components/Balance'
 import BountyModal from './BountyModal'
@@ -35,11 +35,11 @@ const BountyCard = () => {
     estimatedJavaBountyReward,
     fees: { callFee },
   } = useJavaVault()
-  const javaPriceBusd = usePriceJavaBusd()
+  const javaPriceUsdc = usePriceJavaUsdc()
 
   const estimatedDollarBountyReward = useMemo(() => {
-    return new BigNumber(estimatedJavaBountyReward).multipliedBy(javaPriceBusd)
-  }, [javaPriceBusd, estimatedJavaBountyReward])
+    return new BigNumber(estimatedJavaBountyReward).multipliedBy(javaPriceUsdc)
+  }, [javaPriceUsdc, estimatedJavaBountyReward])
 
   const hasFetchedDollarBounty = estimatedDollarBountyReward.gte(0)
   const hasFetchedJavaBounty = estimatedJavaBountyReward ? estimatedJavaBountyReward.gte(0) : false

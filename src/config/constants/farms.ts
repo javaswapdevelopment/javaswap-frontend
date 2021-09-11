@@ -29,12 +29,12 @@ const farms: SerializedFarmConfig[] = [
   },
   {
     pid: 3,
-    lpSymbol: 'BUSD-MATIC LP',
+    lpSymbol: 'USDC-MATIC LP',
     lpAddresses: {
       80001: '',
       137: '0x6471155E47D2C86e9808A6BEBe203960f5e32584',
     },
-    token: serializedTokens.busd,
+    token: serializedTokens.usdc,
     quoteToken: serializedTokens.wmatic,
   },
   /**
@@ -42,13 +42,13 @@ const farms: SerializedFarmConfig[] = [
    */
   {
     pid: 1,
-    lpSymbol: 'JAVA-BUSD LP',
+    lpSymbol: 'JAVA-USDC LP',
     lpAddresses: {
       80001: '',
       137: '0x51C8F864480F44Db0035bb7D5F715184c12d00f0',
     },
     token: serializedTokens.java,
-    quoteToken: serializedTokens.busd,
+    quoteToken: serializedTokens.usdc,
   },
 ]
 

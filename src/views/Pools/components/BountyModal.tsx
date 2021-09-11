@@ -11,7 +11,7 @@ import { useTranslation } from 'contexts/Localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import Balance from 'components/Balance'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import { useJavaVault } from 'state/pools/hooks'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 
@@ -40,13 +40,13 @@ const BountyModal: React.FC<BountyModalProps> = ({ onDismiss, TooltipComponent }
     fees: { callFee },
   } = useJavaVault()
   const { callWithGasPrice } = useCallWithGasPrice()
-  const javaPriceBusd = usePriceJavaBusd()
+  const javaPriceUsdc = usePriceJavaUsdc()
   const callFeeAsDecimal = callFee / 100
   const totalYieldToDisplay = getBalanceNumber(totalPendingJavaHarvest, 18)
 
   const estimatedDollarBountyReward = useMemo(() => {
-    return new BigNumber(estimatedJavaBountyReward).multipliedBy(javaPriceBusd)
-  }, [javaPriceBusd, estimatedJavaBountyReward])
+    return new BigNumber(estimatedJavaBountyReward).multipliedBy(javaPriceUsdc)
+  }, [javaPriceUsdc, estimatedJavaBountyReward])
 
   const hasFetchedDollarBounty = estimatedDollarBountyReward.gte(0)
   const hasFetchedJavaBounty = estimatedJavaBountyReward ? estimatedJavaBountyReward.gte(0) : false

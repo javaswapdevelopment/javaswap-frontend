@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { useTotalSupply, useBurnedBalance } from 'hooks/useTokenBalance'
 import { getBalanceNumber, formatLocalisedCompactNumber } from 'utils/formatBalance'
-import { usePriceJavaBusd } from 'state/farms/hooks'
+import { usePriceJavaUsdc } from 'state/farms/hooks'
 import { Flex, Text, Heading, Skeleton } from '@javaswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
@@ -48,8 +48,8 @@ const JavaDataRow = () => {
   const totalSupply = useTotalSupply()
   const burnedBalance = getBalanceNumber(useBurnedBalance(tokens.java.address))
   const javaSupply = totalSupply ? getBalanceNumber(totalSupply) - burnedBalance : 0
-  const javaPriceBusd = usePriceJavaBusd()
-  const mcap = javaPriceBusd.times(javaSupply)
+  const javaPriceUsdc = usePriceJavaUsdc()
+  const mcap = javaPriceUsdc.times(javaSupply)
   const mcapString = formatLocalisedCompactNumber(mcap.toNumber())
 
   return (

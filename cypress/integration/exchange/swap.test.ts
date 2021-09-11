@@ -24,7 +24,7 @@ describe('Swap', () => {
 
   // This test requires account with some amount of MATIC on it
   // Now with random private key it shows Insufficient MATIC Balance button
-  it.skip('can swap MATIC for BUSD', () => {
+  it.skip('can swap MATIC for USDC', () => {
     cy.get('#swap-currency-output .open-currency-select-button').click()
     cy.get('.token-item-0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174').should('be.visible')
     cy.get('.token-item-0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174').click({ force: true })

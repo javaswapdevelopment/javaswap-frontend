@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ChainId } from '@javaswap/sdk'
-import { useFarms, usePriceJavaBusd } from 'state/farms/hooks'
+import { useFarms, usePriceJavaUsdc } from 'state/farms/hooks'
 import { useAppDispatch } from 'state'
 import { fetchFarmsPublicDataAsync, nonArchivedFarms } from 'state/farms'
 import { getFarmApr } from 'utils/apr'
@@ -20,7 +20,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
   const { data: farms } = useFarms()
   const [fetchStatus, setFetchStatus] = useState(FetchStatus.NOT_FETCHED)
   const [topFarms, setTopFarms] = useState<FarmWithStakedValue[]>([null, null, null, null, null])
-  const javaPriceBusd = usePriceJavaBusd()
+  const javaPriceUsdc = usePriceJavaUsdc()
 
   useEffect(() => {
     const fetchFarmData = async () => {
@@ -42,12 +42,12 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
 
   useEffect(() => {
     const getTopFarmsByApr = (farmsState: DeserializedFarm[]) => {
-      const farmsWithPrices = farmsState.filter((farm) => farm.lpTotalInQuoteToken && farm.quoteTokenPriceBusd)
+      const farmsWithPrices = farmsState.filter((farm) => farm.lpTotalInQuoteToken && farm.quoteTokenPriceUsdc)
       const farmsWithApr: FarmWithStakedValue[] = farmsWithPrices.map((farm) => {
-        const totalLiquidity = farm.lpTotalInQuoteToken.times(farm.quoteTokenPriceBusd)
+        const totalLiquidity = farm.lpTotalInQuoteToken.times(farm.quoteTokenPriceUsdc)
         const { javaRewardsApr, lpRewardsApr } = getFarmApr(
           farm.poolWeight,
-          javaPriceBusd,
+          javaPriceUsdc,
           totalLiquidity,
           farm.lpAddresses[ChainId.MAINNET],
         )
@@ -61,7 +61,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
     if (fetchStatus === FetchStatus.SUCCESS && !topFarms[0]) {
       getTopFarmsByApr(farms)
     }
-  }, [setTopFarms, farms, fetchStatus, javaPriceBusd, topFarms])
+  }, [setTopFarms, farms, fetchStatus, javaPriceUsdc, topFarms])
 
   return { topFarms }
 }
