@@ -6,6 +6,10 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     label: t('Home'),
     icon: 'HomeIcon',
     href: '/',
+  },{
+    label: t('Presale'),
+    icon: 'PresaleIcon',
+    href: 'https://presale.javaswap.io/',
   },
   {
     label: t('Swap'),
@@ -47,12 +51,12 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
     label: t('Referrals'),
     icon: 'ReferralIcon',
-    href: '/',
+    href: '/#ref',
   },
   {
     label: t('NFT'),
-    icon: 'NFTIcon',
-    href: '/',
+    icon: 'NftIcon',
+    href: '/#nft',
     status: menuStatus.SOON
   },
   {
@@ -69,7 +73,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
     label: t('Audits'),
     icon: 'AuditsIcon',
-    href: '/',
+    href: '/#audit',
   },
   {
     label: t('More'),
