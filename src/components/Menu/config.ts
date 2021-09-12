@@ -1,4 +1,4 @@
-import { MenuEntry } from '@javaswap/uikit'
+import { MenuEntry, menuStatus } from '@javaswap/uikit'
 import { ContextApi } from 'contexts/Localization/types'
 
 const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
@@ -8,16 +8,18 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     href: '/',
   },
   {
-    label: t('Trade'),
+    label: t('Swap'),
     icon: 'TradeIcon',
     items: [
       {
-        label: t('Exchange'),
+        label: t('Trade'),
         href: '/swap',
+        icon: 'TradeIcon',
       },
       {
-        label: t('Liquidity'),
+        label: t('Bridge'),
         href: '/liquidity',
+        icon: 'BridgeIcon',
       },
     ],
   },
@@ -32,19 +34,42 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     href: '/pools',
   },
   {
-    label: t('Lottery'),
-    icon: 'TicketIcon',
-    href: '/lottery',
+    label: t('Games'),
+    icon: 'GamesIcon',
+    items: [
+      {
+        label: t('Lottery'),
+        icon: 'TicketIcon',
+        href: '/lottery',
+      },
+    ]
   },
   {
-    label: t('Info'),
-    icon: 'InfoIcon',
-    href: '/info',
+    label: t('Referrals'),
+    icon: 'ReferralIcon',
+    href: '/',
+  },
+  {
+    label: t('NFT'),
+    icon: 'NFTIcon',
+    href: '/',
+    status: menuStatus.SOON
   },
   {
     label: t('IFO'),
     icon: 'IfoIcon',
     href: '/ifo',
+    status: menuStatus.SOON
+  },
+  {
+    label: t('Analytics'),
+    icon: 'AnalyticIcon',
+    href: '/info',
+  },
+  {
+    label: t('Audits'),
+    icon: 'AuditsIcon',
+    href: '/',
   },
   {
     label: t('More'),

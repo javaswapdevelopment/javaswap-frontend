@@ -10,12 +10,12 @@ export const stakeFarm = async (masterBrewContract, pid, amount) => {
   const gasPrice = getGasPrice()
   const value = new BigNumber(amount).times(DEFAULT_TOKEN_DECIMAL).toString()
   if (pid === 0) {
-    const tx = await masterBrewContract.enterStaking(value, { ...options, gasPrice })
+    const tx = await masterBrewContract.enterStaking(value, '0x0000000000000000000000000000000000000000', { ...options, gasPrice })
     const receipt = await tx.wait()
     return receipt.status
   }
 
-  const tx = await masterBrewContract.deposit(pid, value, { ...options, gasPrice })
+  const tx = await masterBrewContract.deposit(pid, value,'0x0000000000000000000000000000000000000000', { ...options, gasPrice })
   const receipt = await tx.wait()
   return receipt.status
 }
@@ -42,7 +42,7 @@ export const harvestFarm = async (masterBrewContract, pid) => {
     return receipt.status
   }
 
-  const tx = await masterBrewContract.deposit(pid, '0', { ...options, gasPrice })
+  const tx = await masterBrewContract.deposit(pid, '0','0x0000000000000000000000000000000000000000', { ...options, gasPrice })
   const receipt = await tx.wait()
   return receipt.status
 }

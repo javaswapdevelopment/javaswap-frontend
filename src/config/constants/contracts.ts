@@ -1,6 +1,6 @@
 export default {
   masterBrew: {
-    137: '0x43E89b80f6EcFe3fAdFCbd83bE1097cd7C92C23d',
+    137: '0xC0C59deDb7C982F051934E23B5DE2e3d52CD7798',
   },
   sousChef: {
     137: '',
@@ -37,7 +37,7 @@ export default {
     137: '',
   },
   javaVault: {
-    137: '0x9c744c69247b6E7cFB88aAfE66fa7866Fc504A12',
+    137: '0x8E04E1aAC497984a0f0BCcDb328c4C6f1d808AF5',
   },
   predictions: {
     137: '',

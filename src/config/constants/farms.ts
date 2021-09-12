@@ -22,20 +22,20 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'JAVA-MATIC LP',
     lpAddresses: {
       80001: '',
-      137: '0x0fAac21ed12f95317Afd43Ba1ef281dcdBaFa22B',
+      137: '0x70EA737A313451BB71E2880dB2cb442dEe9A7F1E',
     },
-    token: serializedTokens.java,
-    quoteToken: serializedTokens.wmatic,
+    token: serializedTokens.wmatic,
+    quoteToken: serializedTokens.java,
   },
   {
     pid: 3,
     lpSymbol: 'USDC-MATIC LP',
     lpAddresses: {
       80001: '',
-      137: '0x6471155E47D2C86e9808A6BEBe203960f5e32584',
+      137: '0xEf45E5814cC503fD3691DCd9128F4200D4e46D02',
     },
-    token: serializedTokens.usdc,
-    quoteToken: serializedTokens.wmatic,
+    token: serializedTokens.wmatic,
+    quoteToken: serializedTokens.usdc,
   },
   /**
    * V3 by order of release (some may be out of PID order due to multiplier boost)
@@ -45,10 +45,10 @@ const farms: SerializedFarmConfig[] = [
     lpSymbol: 'JAVA-USDC LP',
     lpAddresses: {
       80001: '',
-      137: '0x51C8F864480F44Db0035bb7D5F715184c12d00f0',
+      137: '0x09E604a75583eBa6c678D5CFf354b41efE28D511',
     },
-    token: serializedTokens.java,
-    quoteToken: serializedTokens.usdc,
+    token: serializedTokens.usdc,
+    quoteToken: serializedTokens.java,
   },
 ]
 

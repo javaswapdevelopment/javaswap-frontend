@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
 import { Card, Flex, Text, Skeleton } from '@javaswap/uikit'
 import { DeserializedFarm } from 'state/types'
-import { getBscScanLink } from 'utils'
+import { getPolygonScanLink } from 'utils'
 import { useTranslation } from 'contexts/Localization'
 import ExpandableSectionButton from 'components/ExpandableSectionButton'
 import { BASE_ADD_LIQUIDITY_URL } from 'config'
@@ -54,7 +54,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, javaPric
       ? `$${farm.liquidity.toNumber().toLocaleString(undefined, { maximumFractionDigits: 0 })}`
       : ''
 
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('JAVA', '')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase()
   const earnLabel = farm.dual ? farm.dual.earnLabel : t('JAVA + Fees')
 
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
@@ -118,7 +118,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, javaPric
         {showExpandableSection && (
           <DetailsSection
             removed={removed}
-            bscScanAddress={getBscScanLink(lpAddress, 'address')}
+            bscScanAddress={getPolygonScanLink(lpAddress, 'address')}
             infoAddress={`/info/pool/${lpAddress}`}
             totalValueFormatted={totalValueFormatted}
             lpLabel={lpLabel}

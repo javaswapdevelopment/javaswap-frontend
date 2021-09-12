@@ -10,11 +10,11 @@ const pools: SerializedPoolConfig[] = [
     earningToken: serializedTokens.java,
     contractAddress: {
       80001: '',
-      137: '0x43E89b80f6EcFe3fAdFCbd83bE1097cd7C92C23d',
+      137: '0xC0C59deDb7C982F051934E23B5DE2e3d52CD7798',
     },
     poolCategory: PoolCategory.CORE,
     harvest: true,
-    tokenPerBlock: '10',
+    tokenPerBlock: '5',
     sortOrder: 1,
     isFinished: false,
   },

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Text } from '@javaswap/uikit'
-import { getBscScanLink } from 'utils'
+import { getPolygonScanLink } from 'utils'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useTranslation } from 'contexts/Localization'
 import truncateHash from 'utils/truncateHash'
@@ -18,8 +18,8 @@ const DescriptionWithTx: React.FC<DescriptionWithTxProps> = ({ txHash, children 
     <>
       {typeof children === 'string' ? <Text as="p">{children}</Text> : children}
       {txHash && (
-        <Link external href={getBscScanLink(txHash, 'transaction', chainId)}>
-          {t('View on BscScan')}: {truncateHash(txHash, 8, 0)}
+        <Link external href={getPolygonScanLink(txHash, 'transaction', chainId)}>
+          {t('View on PolygonScan')}: {truncateHash(txHash, 8, 0)}
         </Link>
       )}
     </>

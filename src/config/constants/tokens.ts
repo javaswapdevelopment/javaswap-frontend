@@ -41,7 +41,7 @@ export const mainnetTokens = {
   ),
   espresso: new Token(
     MAINNET,
-    '0x3FDF1055d9968e12AD386C284d8a8612823f0DB2',
+    '0x1DE1F188477D4020DC4a17d88d3714960287DaB8',
     18,
     'ESPRESSO',
     'Espresso Token',

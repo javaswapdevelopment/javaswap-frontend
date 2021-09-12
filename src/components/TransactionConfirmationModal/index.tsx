@@ -12,6 +12,7 @@ import {
   Link,
   Spinner,
   Modal,
+  SubmitIcon,
   InjectedModalProps,
 } from '@javaswap/uikit'
 import { registerToken } from 'utils/wallet'
@@ -20,7 +21,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { wrappedCurrency } from 'utils/wrappedCurrency'
 import { RowFixed } from '../Layout/Row'
 import { AutoColumn, ColumnCenter } from '../Layout/Column'
-import { getBscScanLink } from '../../utils'
+import { getPolygonScanLink } from '../../utils'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -76,13 +77,13 @@ function TransactionSubmittedContent({
     <Wrapper>
       <Section>
         <ConfirmedIcon>
-          <ArrowUpIcon strokeWidth={0.5} width="90px" color="primary" />
+          <SubmitIcon strokeWidth={0.5} width="90px" color="primary" />
         </ConfirmedIcon>
         <AutoColumn gap="12px" justify="center">
           <Text fontSize="20px">{t('Transaction Submitted')}</Text>
           {chainId && hash && (
-            <Link external small href={getBscScanLink(hash, 'transaction', chainId)}>
-              {t('View on BscScan')}
+            <Link external small href={getPolygonScanLink(hash, 'transaction', chainId)}>
+              {t('View on PolygonScan')}
             </Link>
           )}
           {currencyToAdd && library?.provider?.isMetaMask && (

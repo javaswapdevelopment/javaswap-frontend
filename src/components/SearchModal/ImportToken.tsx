@@ -3,7 +3,7 @@ import { Token, Currency } from '@javaswap/sdk'
 import { Button, Text, ErrorIcon, Flex, Message, Checkbox, Link, Tag, Grid } from '@javaswap/uikit'
 import { AutoColumn } from 'components/Layout/Column'
 import { useAddUserToken } from 'state/user/hooks'
-import { getBscScanLink } from 'utils'
+import { getPolygonScanLink } from 'utils'
 import truncateHash from 'utils/truncateHash'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCombinedInactiveList } from 'state/lists/hooks'
@@ -66,8 +66,8 @@ function ImportToken({ tokens, handleCurrencySelect }: ImportProps) {
             {chainId && (
               <Flex justifyContent="space-between" width="100%">
                 <Text mr="4px">{address}</Text>
-                <Link href={getBscScanLink(token.address, 'address', chainId)} external>
-                  ({t('View on BscScan')})
+                <Link href={getPolygonScanLink(token.address, 'address', chainId)} external>
+                  ({t('View on PolygonScan')})
                 </Link>
               </Flex>
             )}

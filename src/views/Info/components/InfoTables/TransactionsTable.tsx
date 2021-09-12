@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { formatDistanceToNowStrict } from 'date-fns'
 import { Text, Flex, Box, Radio, Skeleton, LinkExternal, ArrowForwardIcon, ArrowBackIcon } from '@javaswap/uikit'
 import { formatAmount } from 'views/Info/utils/formatInfoNumbers'
-import { getBscScanLink } from 'utils'
+import { getPolygonScanLink } from 'utils'
 import truncateHash from 'utils/truncateHash'
 import { Transaction, TransactionType } from 'state/info/types'
 import { ITEMS_PER_INFO_TABLE_PAGE } from 'config/constants/info'
@@ -101,7 +101,7 @@ const DataRow: React.FC<{ transaction: Transaction }> = ({ transaction }) => {
 
   return (
     <ResponsiveGrid>
-      <LinkExternal href={getBscScanLink(transaction.hash, 'transaction')}>
+      <LinkExternal href={getPolygonScanLink(transaction.hash, 'transaction')}>
         <Text>
           {transaction.type === TransactionType.MINT
             ? t('Add %token0% and %token1%', { token0: transaction.token0Symbol, token1: transaction.token1Symbol })
@@ -117,7 +117,7 @@ const DataRow: React.FC<{ transaction: Transaction }> = ({ transaction }) => {
       <Text>
         <Text>{`${formatAmount(abs1)} ${transaction.token1Symbol}`}</Text>
       </Text>
-      <LinkExternal href={getBscScanLink(transaction.sender, 'address')}>
+      <LinkExternal href={getPolygonScanLink(transaction.sender, 'address')}>
         {truncateHash(transaction.sender)}
       </LinkExternal>
       <Text>{formatDistanceToNowStrict(parseInt(transaction.timestamp, 10) * 1000)}</Text>

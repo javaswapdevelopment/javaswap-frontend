@@ -4,7 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import useTokenBalance, { FetchStatus, useGetMaticBalance } from 'hooks/useTokenBalance'
 import useAuth from 'hooks/useAuth'
 import { useTranslation } from 'contexts/Localization'
-import { getBscScanLink } from 'utils'
+import { getPolygonScanLink } from 'utils'
 import { getFullDisplayBalance, formatBigNumber } from 'utils/formatBalance'
 import tokens from 'config/constants/tokens'
 import CopyAddress from './CopyAddress'
@@ -57,7 +57,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowMaticBalance, onDismiss }
         )}
       </Flex>
       <Flex alignItems="center" justifyContent="end" mb="24px">
-        <LinkExternal href={getBscScanLink(account, 'address')}>{t('View on BscScan')}</LinkExternal>
+        <LinkExternal href={getPolygonScanLink(account, 'address')}>{t('View on PolygonScan')}</LinkExternal>
       </Flex>
       <Button variant="secondary" width="100%" onClick={handleLogout}>
         {t('Disconnect Wallet')}
