@@ -4,7 +4,7 @@ import { parseUnits } from 'ethers/lib/utils'
 import { useAppDispatch } from 'state'
 import { updateUserStakedBalance, updateUserBalance, updateUserPendingReward } from 'state/actions'
 import { unstakeFarm } from 'utils/calls'
-import { useMasterchef, useSousChef } from 'hooks/useContract'
+import { useMasterbrew, useSousChef } from 'hooks/useContract'
 import getGasPrice from 'utils/getGasPrice'
 
 const sousUnstake = async (sousChefContract: any, amount: string, decimals: number) => {
@@ -28,7 +28,7 @@ const sousEmergencyUnstake = async (sousChefContract: any) => {
 const useUnstakePool = (sousId: number, enableEmergencyWithdraw = false) => {
   const dispatch = useAppDispatch()
   const { account } = useWeb3React()
-  const masterBrewContract = useMasterchef()
+  const masterBrewContract = useMasterbrew()
   const sousChefContract = useSousChef(sousId)
 
   const handleUnstake = useCallback(

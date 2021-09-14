@@ -6,7 +6,7 @@ import { stakeFarm } from 'utils/calls'
 import BigNumber from 'bignumber.js'
 import { DEFAULT_TOKEN_DECIMAL, DEFAULT_GAS_LIMIT } from 'config'
 import { BIG_TEN } from 'utils/bigNumber'
-import { useMasterchef, useSousChef } from 'hooks/useContract'
+import { useMasterbrew, useSousChef } from 'hooks/useContract'
 import getGasPrice from 'utils/getGasPrice'
 
 const options = {
@@ -36,7 +36,7 @@ const sousStakeMatic = async (sousChefContract, amount) => {
 const useStakePool = (sousId: number, isUsingMatic = false) => {
   const dispatch = useAppDispatch()
   const { account } = useWeb3React()
-  const masterBrewContract = useMasterchef()
+  const masterBrewContract = useMasterbrew()
   const sousChefContract = useSousChef(sousId)
 
   const handleStake = useCallback(

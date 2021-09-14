@@ -34,6 +34,9 @@ const Nav = () => {
         <ButtonMenuItem id="pool-nav-link" to="/pool" as={Link}>
           {t('Liquidity')}
         </ButtonMenuItem>
+        <ButtonMenuItem id="pool-nav-link" to="/bridge" as={Link}>
+          {t('Bridge')}
+        </ButtonMenuItem>
       </ButtonMenu>
     </StyledNav>
   )

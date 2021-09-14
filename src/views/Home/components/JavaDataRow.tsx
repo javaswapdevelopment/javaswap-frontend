@@ -7,6 +7,7 @@ import { Flex, Text, Heading, Skeleton } from '@javaswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import Balance from 'components/Balance'
 import tokens from 'config/constants/tokens'
+import { JAVA_PER_BLOCK } from 'config'
 
 const StyledColumn = styled(Flex)<{ noMobileBorder?: boolean }>`
   flex-direction: column;
@@ -41,7 +42,7 @@ const Grid = styled.div`
   }
 `
 
-const emissionsPerBlock = 15
+const emissionsPerBlock = JAVA_PER_BLOCK.toNumber()
 
 const JavaDataRow = () => {
   const { t } = useTranslation()

@@ -96,6 +96,7 @@ const ViewControls = styled.div`
   }
 `
 
+
 const StyledImage = styled(Image)`
   margin-left: auto;
   margin-right: auto;
@@ -369,12 +370,13 @@ const Farms: React.FC = () => {
 
   return (
     <>
-      <PageHeader>
+      <img src="/images/banners/farm.jpg" alt="JAVASWAP" width="100%" />
+      <PageHeader background="transparent">
         <Heading as="h1" scale="xxl" color="secondary" mb="24px">
           {t('Farms')}
         </Heading>
         <Heading scale="lg" color="text">
-          {t('Stake LP tokens to earn.')}
+          {t('Stake Liquidity Pool (LP) tokens to earn.')}
         </Heading>
       </PageHeader>
       <Page>
@@ -434,7 +436,7 @@ const Farms: React.FC = () => {
           </Flex>
         )}
         <div ref={observerRef} />
-        <StyledImage src="/images/decorations/3dpan.png" alt="Java illustration" width={120} height={103} />
+        <StyledImage src="/images/decorations/farm.png" alt="Java illustration" width={120} height={83} />
       </Page>
     </>
   )

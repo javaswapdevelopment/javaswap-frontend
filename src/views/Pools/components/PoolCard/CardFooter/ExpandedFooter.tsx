@@ -16,7 +16,7 @@ import {
   Link,
   HelpIcon,
 } from '@javaswap/uikit'
-import { BASE_BSC_SCAN_URL } from 'config'
+import { BASE_POLYGON_SCAN_URL } from 'config'
 import { useBlock } from 'state/block/hooks'
 import { useJavaVault } from 'state/pools/hooks'
 import { DeserializedPool } from 'state/types'
@@ -163,7 +163,7 @@ const ExpandedFooter: React.FC<ExpandedFooterProps> = ({ pool, account }) => {
       {poolContractAddress && (
         <Flex mb="2px" justifyContent="flex-end">
           <LinkExternal
-            href={`${BASE_BSC_SCAN_URL}/address/${isAutoVault ? javaVaultContractAddress : poolContractAddress}`}
+            href={`${BASE_POLYGON_SCAN_URL}/address/${isAutoVault ? javaVaultContractAddress : poolContractAddress}`}
             bold={false}
             small
           >

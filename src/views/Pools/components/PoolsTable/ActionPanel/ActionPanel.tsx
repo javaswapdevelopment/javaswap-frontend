@@ -13,7 +13,7 @@ import {
   TimerIcon,
   useTooltip,
 } from '@javaswap/uikit'
-import { BASE_BSC_SCAN_URL } from 'config'
+import { BASE_POLYGON_SCAN_URL } from 'config'
 import { getPolygonScanLink } from 'utils'
 import { useBlock } from 'state/block/hooks'
 import { useJavaVault } from 'state/pools/hooks'
@@ -263,7 +263,7 @@ const ActionPanel: React.FC<ActionPanelProps> = ({ account, pool, userDataLoaded
         {poolContractAddress && (
           <Flex mb="8px" justifyContent={['flex-end', 'flex-end', 'flex-start']}>
             <LinkExternal
-              href={`${BASE_BSC_SCAN_URL}/address/${isAutoVault ? javaVaultContractAddress : poolContractAddress}`}
+              href={`${BASE_POLYGON_SCAN_URL}/address/${isAutoVault ? javaVaultContractAddress : poolContractAddress}`}
               bold={false}
             >
               {t('View Contract')}

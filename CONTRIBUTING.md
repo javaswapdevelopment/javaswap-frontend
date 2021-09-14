@@ -1,4 +1,4 @@
-# Contributing to the Java ecosystem 🥞
+# Contributing to the Java ecosystem ☕
 
 Thanks for taking the time to contribute !
 You can start by reading our [Contribution guidelines](https://docs.javaswap.io/code/contributing) first.

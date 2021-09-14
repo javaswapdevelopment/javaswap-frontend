@@ -1,8 +1,9 @@
-import React, { lazy } from 'react'
+import React, { lazy, useEffect } from 'react'
 import { Router, Redirect, Route, Switch } from 'react-router-dom'
 import { ResetCSS } from '@javaswap/uikit'
 import BigNumber from 'bignumber.js'
 import useEagerConnect from 'hooks/useEagerConnect'
+import { useTranslation } from 'contexts/Localization'
 import { usePollBlockNumber } from 'state/block/hooks'
 import { usePollCoreFarmData } from 'state/farms/hooks'
 import { DatePickerPortal } from 'components/DatePicker'
@@ -24,6 +25,7 @@ import {
 import RedirectOldRemoveLiquidityPathStructure from './views/RemoveLiquidity/redirects'
 import { RedirectPathToSwapOnly, RedirectToSwap } from './views/Swap/redirects'
 
+
 // Route-based code splitting
 // Only pool is included in the main bundle because of it's the most visited page
 const Home = lazy(() => import('./views/Home'))
@@ -36,6 +38,8 @@ const Liquidity = lazy(() => import('./views/Pool'))
 const PoolFinder = lazy(() => import('./views/PoolFinder'))
 const RemoveLiquidity = lazy(() => import('./views/RemoveLiquidity'))
 const Info = lazy(() => import('./views/Info'))
+const Referrals = lazy(() => import('./views/Referrals'))
+const Soon = lazy(() => import('./views/Soon'))
 
 // This config is required for number formatting
 BigNumber.config({
@@ -47,6 +51,15 @@ const App: React.FC = () => {
   usePollBlockNumber()
   useEagerConnect()
   usePollCoreFarmData()
+  const { t } = useTranslation()
+
+  // Save referral url
+  useEffect(() => {
+    const ref = new URLSearchParams(window.location.search).get('ref')
+    if (ref) {
+      localStorage.setItem('ref', ref)
+    }
+  }, [])
 
   return (
     <Router history={history}>
@@ -70,6 +83,13 @@ const App: React.FC = () => {
             <Route path="/ifo">
               <Ifos />
             </Route>
+            <Route path="/referral">
+              <Referrals />
+            </Route>
+            <Route path="/nft">
+              <Soon title={t('NFT')} content={t('A market made for NFT. where everything is special')} />
+            </Route>
+            
             {/* Info pages */}
             <Route path="/info">
               <Info />

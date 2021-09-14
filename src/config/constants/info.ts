@@ -8,7 +8,7 @@ export const TREASURY_FEE = 0.0003
 export const BUYBACK_FEE = 0.0005
 
 export const BASE_URL = 'https://javaswap.io'
-export const BASE_BSC_SCAN_URL = 'https://polygonscan.com'
+export const BASE_POLYGON_SCAN_URL = 'https://polygonscan.com'
 
 export const PCS_V2_START = 1619136000 // April 23, 2021, 12:00:00 AM
 export const ONE_DAY_UNIX = 86400 // 24h * 60m * 60s

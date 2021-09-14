@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Flex } from '@javaswap/uikit'
-import Footer from 'components/Menu/Footer'
 import SubNav from 'components/Menu/SubNav'
 import { PageMeta } from 'components/Layout/Page'
 
@@ -13,7 +12,7 @@ const StyledPage = styled.div`
   padding: 16px;
   padding-bottom: 0;
   min-height: calc(100vh - 64px);
-  background: ${({ theme }) => theme.colors.gradients.bubblegum};
+
 
   ${({ theme }) => theme.mediaQueries.xs} {
     background-size: auto;
@@ -38,7 +37,6 @@ const Page: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({ children, ...pro
         <SubNav />
         {children}
         <Flex flexGrow={1} />
-        <Footer />
       </StyledPage>
     </>
   )

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { CurrencyAmount, JSBI, Token, Trade } from '@javaswap/sdk'
-import { Button, Text, ArrowDownIcon, Box, useModal } from '@javaswap/uikit'
+import { Button, Text, ArrowDownIcon, Box, useModal, LinearStepper } from '@javaswap/uikit'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
 import { RouteComponentProps } from 'react-router-dom'
@@ -46,6 +46,10 @@ const Label = styled(Text)`
   font-size: 12px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.secondary};
+`
+
+const ContainerStepper = styled.div`
+  width: 80%;
 `
 
 export default function Swap({ history }: RouteComponentProps) {
@@ -489,12 +493,16 @@ export default function Swap({ history }: RouteComponentProps) {
             {isExpertMode && swapErrorMessage ? <SwapCallbackError error={swapErrorMessage} /> : null}
           </Box>
         </Wrapper>
+        
       </AppBody>
       {!swapIsUnsupported ? (
         <AdvancedSwapDetailsDropdown trade={trade} />
       ) : (
         <UnsupportedCurrencyFooter currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
+      <ContainerStepper>
+        <LinearStepper />
+      </ContainerStepper>
     </Page>
   )
 }

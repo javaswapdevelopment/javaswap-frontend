@@ -25,6 +25,7 @@ import {
   getBunnySpecialPredictionAddress,
   getBunnySpecialLotteryAddress,
   getFarmAuctionAddress,
+  getReferralContractAddress,
 } from 'utils/addressHelpers'
 
 // ABI
@@ -55,6 +56,7 @@ import bunnySpecialJavaVaultAbi from 'config/abi/bunnySpecialJavaVault.json'
 import bunnySpecialPredictionAbi from 'config/abi/bunnySpecialPrediction.json'
 import bunnySpecialLotteryAbi from 'config/abi/bunnySpecialLottery.json'
 import farmAuctionAbi from 'config/abi/farmAuction.json'
+import ReferralAbi from 'config/abi/referral.json'
 import { ChainLinkOracleContract, FarmAuctionContract, JavaProfileContract, PredictionsContract } from './types'
 
 const getContract = (abi: any, address: string, signer?: ethers.Signer | ethers.providers.Provider) => {
@@ -144,4 +146,7 @@ export const getBunnySpecialLotteryContract = (signer?: ethers.Signer | ethers.p
 }
 export const getFarmAuctionContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
   return getContract(farmAuctionAbi, getFarmAuctionAddress(), signer) as FarmAuctionContract
+}
+export const getReferralContract = (signer?: ethers.Signer | ethers.providers.Provider) => {
+  return getContract(ReferralAbi, getReferralContractAddress(), signer)
 }

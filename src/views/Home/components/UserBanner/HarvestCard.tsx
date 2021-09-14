@@ -5,7 +5,7 @@ import BigNumber from 'bignumber.js'
 import { useTranslation } from 'contexts/Localization'
 import { usePriceJavaUsdc } from 'state/farms/hooks'
 import useToast from 'hooks/useToast'
-import { useMasterchef } from 'hooks/useContract'
+import { useMasterbrew } from 'hooks/useContract'
 import { harvestFarm } from 'utils/calls'
 import Balance from 'components/Balance'
 import useFarmsWithBalance from 'views/Home/hooks/useFarmsWithBalance'
@@ -22,7 +22,7 @@ const HarvestCard = () => {
   const { toastSuccess, toastError } = useToast()
   const { farmsWithStakedBalance, earningsSum: farmEarningsSum } = useFarmsWithBalance()
 
-  const masterBrewContract = useMasterchef()
+  const masterBrewContract = useMasterbrew()
   const javaPriceUsdc = usePriceJavaUsdc()
   const earningsUsdc = new BigNumber(farmEarningsSum).multipliedBy(javaPriceUsdc)
   const numTotalToCollect = farmsWithStakedBalance.length

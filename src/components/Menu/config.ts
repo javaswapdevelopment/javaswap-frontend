@@ -51,12 +51,12 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
     label: t('Referrals'),
     icon: 'ReferralIcon',
-    href: '/#ref',
+    href: '/referral',
   },
   {
     label: t('NFT'),
     icon: 'NftIcon',
-    href: '/#nft',
+    href: '/nft',
     status: menuStatus.SOON
   },
   {

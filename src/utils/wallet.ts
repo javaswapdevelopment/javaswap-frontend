@@ -1,6 +1,6 @@
 // Set of helper functions to facilitate wallet setup
 
-import { BASE_BSC_SCAN_URL, BASE_URL } from 'config'
+import { BASE_POLYGON_SCAN_URL, BASE_URL } from 'config'
 import { nodes } from './getRpcUrl'
 
 /**
@@ -24,7 +24,7 @@ export const setupNetwork = async () => {
               decimals: 18,
             },
             rpcUrls: nodes,
-            blockExplorerUrls: [`${BASE_BSC_SCAN_URL}/`],
+            blockExplorerUrls: [`${BASE_POLYGON_SCAN_URL}/`],
           },
         ],
       })

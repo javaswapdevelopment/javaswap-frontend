@@ -5,7 +5,7 @@ import { updateUserBalance, updateUserPendingReward } from 'state/actions'
 import { harvestFarm } from 'utils/calls'
 import { BIG_ZERO } from 'utils/bigNumber'
 import getGasPrice from 'utils/getGasPrice'
-import { useMasterchef, useSousChef } from 'hooks/useContract'
+import { useMasterbrew, useSousChef } from 'hooks/useContract'
 import { DEFAULT_GAS_LIMIT } from 'config'
 
 const options = {
@@ -30,7 +30,7 @@ const useHarvestPool = (sousId, isUsingMatic = false) => {
   const dispatch = useAppDispatch()
   const { account } = useWeb3React()
   const sousChefContract = useSousChef(sousId)
-  const masterBrewContract = useMasterchef()
+  const masterBrewContract = useMasterbrew()
 
   const handleHarvest = useCallback(async () => {
     if (sousId === 0) {

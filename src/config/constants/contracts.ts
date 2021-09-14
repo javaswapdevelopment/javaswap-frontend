@@ -11,6 +11,9 @@ export default {
   multiCall: {
     137: '0x513000eDEDD7244490C632CC806F5DB08dc73FE3',
   },
+  referral:{
+    137: '0xccE249c933374A1E83610247D5f90Da6d6ae357D',
+  },
   javaProfile: {
     137: '',
   },

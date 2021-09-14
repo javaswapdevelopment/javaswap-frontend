@@ -25,6 +25,7 @@ import {
   getBunnySpecialPredictionContract,
   getFarmAuctionContract,
   getBunnySpecialLotteryContract,
+  getReferralContract,
 } from 'utils/contractHelpers'
 import { getMulticallAddress } from 'utils/addressHelpers'
 
@@ -92,7 +93,7 @@ export const useLotteryV2Contract = () => {
   return useMemo(() => getLotteryV2Contract(library.getSigner()), [library])
 }
 
-export const useMasterchef = () => {
+export const useMasterbrew = () => {
   const { library } = useActiveWeb3React()
   return useMemo(() => getMasterchefContract(library.getSigner()), [library])
 }
@@ -233,4 +234,9 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 
 export function useMulticallContract(): Contract | null {
   return useContract(getMulticallAddress(), multiCallAbi, false)
+}
+
+export const useReferralContract = () => {
+  const { library } = useActiveWeb3React()
+  return useMemo(() => getReferralContract(library.getSigner()), [library])
 }
