@@ -5,7 +5,6 @@ import {
   Button,
   Text,
   ErrorIcon,
-  ArrowUpIcon,
   MetamaskIcon,
   Flex,
   Box,

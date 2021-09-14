@@ -24,8 +24,8 @@ const farms: SerializedFarmConfig[] = [
       80001: '',
       137: '0x70EA737A313451BB71E2880dB2cb442dEe9A7F1E',
     },
-    token: serializedTokens.wmatic,
-    quoteToken: serializedTokens.java,
+    token: serializedTokens.java,
+    quoteToken: serializedTokens.wmatic,
   },
   {
     pid: 3,
@@ -34,8 +34,8 @@ const farms: SerializedFarmConfig[] = [
       80001: '',
       137: '0xEf45E5814cC503fD3691DCd9128F4200D4e46D02',
     },
-    token: serializedTokens.wmatic,
-    quoteToken: serializedTokens.usdc,
+    token: serializedTokens.usdc,
+    quoteToken: serializedTokens.wmatic,
   },
   /**
    * V3 by order of release (some may be out of PID order due to multiplier boost)
@@ -47,8 +47,8 @@ const farms: SerializedFarmConfig[] = [
       80001: '',
       137: '0x09E604a75583eBa6c678D5CFf354b41efE28D511',
     },
-    token: serializedTokens.usdc,
-    quoteToken: serializedTokens.java,
+    token: serializedTokens.java,
+    quoteToken: serializedTokens.usdc,
   },
 ]
 

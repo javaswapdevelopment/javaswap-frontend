@@ -86,7 +86,7 @@ const getFarmQuoteTokenPrice = (
 }
 
 const fetchFarmsPrices = async (farms: SerializedFarm[]) => {
-  const maticUsdcFarm = farms.find((farm) => farm.pid === 252)
+  const maticUsdcFarm = farms.find((farm) => farm.pid === 3)
   const maticPriceUsdc = maticUsdcFarm.tokenPriceVsQuote ? BIG_ONE.div(maticUsdcFarm.tokenPriceVsQuote) : BIG_ZERO
 
   const farmsWithPrices = farms.map((farm) => {
