@@ -20,7 +20,7 @@ const CardHeaderStyled = styled(CardHeader)`
   background:  ${({ theme }) => theme.colors.input}
 `
 
-const IfoQuestions = () => {
+const BridgeInfo = () => {
   const { t } = useTranslation()
 
   return (
@@ -51,4 +51,4 @@ const IfoQuestions = () => {
   )
 }
 
-export default IfoQuestions
+export default BridgeInfo

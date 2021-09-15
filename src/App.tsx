@@ -39,6 +39,7 @@ const PoolFinder = lazy(() => import('./views/PoolFinder'))
 const RemoveLiquidity = lazy(() => import('./views/RemoveLiquidity'))
 const Info = lazy(() => import('./views/Info'))
 const Referrals = lazy(() => import('./views/Referrals'))
+const Bridge = lazy(() => import('./views/Bridge'))
 const Soon = lazy(() => import('./views/Soon'))
 
 // This config is required for number formatting
@@ -88,6 +89,9 @@ const App: React.FC = () => {
             </Route>
             <Route path="/nft">
               <Soon title={t('NFT')} content={t('A market made for NFT. where everything is special')} />
+            </Route>
+            <Route path="/bridge">
+              <Bridge />
             </Route>
             
             {/* Info pages */}

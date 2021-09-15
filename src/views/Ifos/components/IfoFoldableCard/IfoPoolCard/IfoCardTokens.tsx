@@ -36,6 +36,7 @@ const TokenSection: React.FC<TokenSectionProps> = ({ primaryToken, secondaryToke
     if (primaryToken && secondaryToken) {
       return (
         <TokenPairImage
+          farm
           variant="inverted"
           primaryToken={primaryToken}
           height={32}

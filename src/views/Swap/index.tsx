@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { CurrencyAmount, JSBI, Token, Trade } from '@javaswap/sdk'
-import { Button, Text, ArrowDownIcon, Box, useModal, LinearStepper } from '@javaswap/uikit'
+import { Button, Text, ArrowDownIcon, Box, useModal, LinearStepper, Flex } from '@javaswap/uikit'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
 import { RouteComponentProps } from 'react-router-dom'
@@ -50,6 +50,16 @@ const Label = styled(Text)`
 
 const ContainerStepper = styled.div`
   width: 80%;
+`
+
+const ImageWrapper = styled.div`
+    flex: none;
+    max-width: 200px;
+    width: 100%; 
+    display: none;
+    ${({ theme }) => theme.mediaQueries.md} {
+      display: flex !important;
+    }
 `
 
 export default function Swap({ history }: RouteComponentProps) {
@@ -304,8 +314,14 @@ export default function Swap({ history }: RouteComponentProps) {
     'confirmSwapModal',
   )
 
+  
+
   return (
     <Page>
+      <Flex width="100%" alignItems={['center', null, null, 'start']} justifyContent="space-between" flexDirection={['column', null, null, 'row']}>
+        <ImageWrapper>
+          <img src="/images/swap2.png" alt="javaswap" />
+        </ImageWrapper>
       <AppBody>
         <AppHeader title={t('Exchange')} subtitle={t('Trade tokens in an instant')} />
         <Wrapper id="swap-page">
@@ -495,6 +511,10 @@ export default function Swap({ history }: RouteComponentProps) {
         </Wrapper>
         
       </AppBody>
+      <ImageWrapper>
+          <img src="/images/swap1.png" alt="javaswap" />
+        </ImageWrapper>
+      </Flex>
       {!swapIsUnsupported ? (
         <AdvancedSwapDetailsDropdown trade={trade} />
       ) : (

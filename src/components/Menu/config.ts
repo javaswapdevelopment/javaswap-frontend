@@ -22,7 +22,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
       },
       {
         label: t('Bridge'),
-        href: '/liquidity',
+        href: '/bridge',
         icon: 'BridgeIcon',
       },
     ],
@@ -42,8 +42,8 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     icon: 'GamesIcon',
     items: [
       {
-        label: t('Lottery'),
-        icon: 'TicketIcon',
+        label: t('Lucky Lotto'),
+        icon: 'LottoIcon',
         href: '/lottery',
       },
     ]
