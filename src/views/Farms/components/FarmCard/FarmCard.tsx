@@ -118,7 +118,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, displayApr, removed, javaPric
         {showExpandableSection && (
           <DetailsSection
             removed={removed}
-            bscScanAddress={getPolygonScanLink(lpAddress, 'address')}
+            polygonScanAddress={getPolygonScanLink(lpAddress, 'address')}
             infoAddress={`/info/pool/${lpAddress}`}
             totalValueFormatted={totalValueFormatted}
             lpLabel={lpLabel}

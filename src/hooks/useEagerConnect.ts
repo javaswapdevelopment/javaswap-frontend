@@ -26,7 +26,7 @@ const useEagerConnect = () => {
       const isConnectorBinanceChain = connectorId === ConnectorNames.BSC
       const isBinanceChainDefined = Reflect.has(window, 'BinanceChain')
 
-      // Currently BSC extension doesn't always inject in time.
+      // Currently MATIC extension doesn't always inject in time.
       // We must check to see if it exists, and if not, wait for it before proceeding.
       if (isConnectorBinanceChain && !isBinanceChainDefined) {
         _binanceChainListener().then(() => login(connectorId))

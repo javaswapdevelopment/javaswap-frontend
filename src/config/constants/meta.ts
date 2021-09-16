@@ -4,7 +4,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'JavaSwap',
   description:
-    'The most popular AMM on BSC by user count! Earn JAVA through yield farming or win it in the Lottery, then stake it in Espresso Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by JavaSwap), NFTs, and more, on a platform you can trust.',
+    'The most popular AMM on MATIC by user count! Earn JAVA through yield farming or win it in the Lottery, then stake it in Espresso Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by JavaSwap), NFTs, and more, on a platform you can trust.',
   image: 'https://javaswap.io/images/hero.png',
 }
 

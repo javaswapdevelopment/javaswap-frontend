@@ -26,7 +26,7 @@ interface Props {
 
 const multiplierValues = [0.1, 0.25, 0.5, 0.75, 1]
 
-// Default value for transaction setting, tweak based on BSC network congestion.
+// Default value for transaction setting, tweak based on MATIC network congestion.
 const gasPrice = parseUnits('10', 'gwei').toString()
 
 const ContributeModal: React.FC<Props> = ({

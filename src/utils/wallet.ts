@@ -4,7 +4,7 @@ import { BASE_POLYGON_SCAN_URL, BASE_URL } from 'config'
 import { nodes } from './getRpcUrl'
 
 /**
- * Prompt the user to add BSC as a network on Metamask, or switch to BSC if the wallet is on a different network
+ * Prompt the user to add MATIC as a network on Metamask, or switch to MATIC if the wallet is on a different network
  * @returns {boolean} true if the setup succeeded, false otherwise
  */
 export const setupNetwork = async () => {
@@ -34,7 +34,7 @@ export const setupNetwork = async () => {
       return false
     }
   } else {
-    console.error("Can't setup the BSC network on metamask because window.ethereum is undefined")
+    console.error("Can't setup the MATIC network on metamask because window.ethereum is undefined")
     return false
   }
 }
