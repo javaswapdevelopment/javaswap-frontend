@@ -18,7 +18,7 @@ export const swapSectionData: SalesSectionProps = {
     path: '/images/home/trade/',
     attributes: [
       { src: 'MATIC', alt: 'MATIC token' },
-      { src: 'BTC', alt: 'BTC token' },
+      { src: 'ETH', alt: 'ETH token' },
       { src: 'JAVA', alt: 'JAVA token' },
     ],
   },
@@ -41,9 +41,9 @@ export const earnSectionData: SalesSectionProps = {
   images: {
     path: '/images/home/earn/',
     attributes: [
-      { src: 'pie', alt: 'Pie chart' },
-      { src: 'stonks', alt: 'Stocks chart' },
-      { src: 'folder', alt: 'Folder with java token' },
+      { src: 'star', alt: 'JavaSwap' },
+      { src: 'java', alt: 'JavaSwap' },
+      { src: 'matic', alt: 'Polygon' },
     ],
   },
 }
@@ -54,7 +54,7 @@ export const javaSectionData: SalesSectionProps = {
     'JAVA token is at the heart of the JavaSwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
   reverse: false,
   primaryButton: {
-    to: '/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82',
+    to: '/swap?outputCurrency=0xAFC9AA5ebd7197662D869F75890F18AafEEFb1f5',
     text: 'Buy JAVA',
     external: false,
   },
