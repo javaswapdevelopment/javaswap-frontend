@@ -73,7 +73,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
     label: t('Audits'),
     icon: 'AuditsIcon',
-    href: '/#audit',
+    href: 'https://javaswapgitbook.gitbook.io/javaswap/security/audits',
   },
   {
     label: t('More'),
@@ -81,7 +81,7 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     items: [
       {
         label: t('Contact'),
-        href: 'https://docs.javaswap.io/contact-us',
+        href: 'https://javaswapgitbook.gitbook.io/javaswap/social-media-and-contact',
       },
       {
         label: t('Github'),
@@ -89,11 +89,11 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
       },
       {
         label: t('Docs'),
-        href: 'https://docs.javaswap.io',
+        href: 'https://javaswapgitbook.gitbook.io/javaswap',
       },
       {
         label: t('Blog'),
-        href: 'https://javaswap.medium.com',
+        href: 'https://javaswapofficial.medium.com/ ',
       },
     ],
   },

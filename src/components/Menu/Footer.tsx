@@ -59,7 +59,7 @@ const Footer = () => {
             id="clickExchangeHelp"
             as="a"
             external
-            href="https://docs.javaswap.io/products/javaswap-exchange"
+            href="https://javaswapgitbook.gitbook.io/javaswap/products/javaswap-exchange"
             variant="subtle"
           >
             {t('Need help ?')}

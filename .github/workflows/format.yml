@@ -13,7 +13,7 @@ jobs:
       - uses: wagoid/commitlint-github-action@v2
         with:
           configFile: .commitlintrc.json
-          helpURL: https://docs.javaswap.io/code/contributing#committing
+          helpURL: https://javaswapgitbook.gitbook.io/javaswap/code/contributing#committing
   code:
     runs-on: ubuntu-latest
 

@@ -325,7 +325,7 @@ const HowToPlay: React.FC = () => {
                 {t(
                   'An average total of 35,000 JAVA from the treasury is added to lottery rounds over the course of a week. This JAVA is of course also included in rollovers! Read more in our guide to ',
                 )}
-                <InlineLink href="https://docs.javaswap.io/tokenomics/java/java-tokenomics">
+                <InlineLink href="https://javaswapgitbook.gitbook.io/javaswap/tokenomics/java/java-tokenomics">
                   {t('JAVA Tokenomics')}
                 </InlineLink>
               </Text>
@@ -345,7 +345,7 @@ const HowToPlay: React.FC = () => {
           </Heading>
           <Text>
             {t('Check our in-depth guide on')}{' '}
-            <InlineLink href="https://docs.javaswap.io/products/lottery/lottery-guide">
+            <InlineLink href="https://javaswapgitbook.gitbook.io/javaswap/products/lottery/lottery-guide">
               {t('how to play the JavaSwap lottery!')}
             </InlineLink>
           </Text>

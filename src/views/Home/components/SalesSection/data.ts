@@ -10,7 +10,7 @@ export const swapSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.javaswap.io/',
+    to: 'https://javaswapgitbook.gitbook.io/javaswap/',
     text: 'Learn',
     external: true,
   },
@@ -34,7 +34,7 @@ export const earnSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.javaswap.io/products/yield-farming',
+    to: 'https://javaswapgitbook.gitbook.io/javaswap/products/yield-farming',
     text: 'Learn',
     external: true,
   },
@@ -59,7 +59,7 @@ export const javaSectionData: SalesSectionProps = {
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.javaswap.io/tokenomics/java',
+    to: 'https://javaswapgitbook.gitbook.io/javaswap/tokenomics/java',
     text: 'Learn',
     external: true,
   },

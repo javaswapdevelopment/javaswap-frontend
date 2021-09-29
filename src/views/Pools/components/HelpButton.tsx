@@ -26,7 +26,7 @@ const StyledLink = styled(Link)`
 const HelpButton = () => {
   const { t } = useTranslation()
   return (
-    <StyledLink external href="https://docs.javaswap.io/espresso-pools/espresso-pool">
+    <StyledLink external href="https://javaswapgitbook.gitbook.io/javaswap/espresso-pools/espresso-pool">
       <Button px={['14px', null, null, null, '20px']} variant="subtle">
         <ButtonText color="backgroundAlt" bold fontSize="16px">
           {t('Help')}

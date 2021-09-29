@@ -22,7 +22,7 @@ const ifos: Ifo[] = [
     token: tokens.kalm,
     releaseBlockNumber: 7707736,
     campaignId: '511110000',
-    articleUrl: 'https://javaswap.medium.com/kalmar-kalm-ifo-to-be-hosted-on-javaswap-4540059753e4',
+    articleUrl: 'https://javaswapofficial.medium.com/ /kalmar-kalm-ifo-to-be-hosted-on-javaswap-4540059753e4',
     tokenOfferingPrice: 2.0,
     version: 2,
   }, */

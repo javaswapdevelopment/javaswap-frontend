@@ -2392,10 +2392,10 @@
     tiny-warning "^1.0.3"
     toformat "^2.0.0"
 
-"@javaswap/uikit@1.1.23":
-  version "1.1.23"
-  resolved "https://registry.yarnpkg.com/@javaswap/uikit/-/uikit-1.1.23.tgz#edcb6243043b581f4bbde01c3074af1f2aa559b1"
-  integrity sha512-/Pv9aFBVpsNXvEJbu43cxMOB64c3Jw5HeUvbmp3oRBlrma91aYg3Bzd01iIIt4c6KHLpTA41KYkGqcQ49fiEug==
+"@javaswap/uikit@1.1.25":
+  version "1.1.25"
+  resolved "https://registry.yarnpkg.com/@javaswap/uikit/-/uikit-1.1.25.tgz#fbb1a538d397d199d5105c37e26d1234f248e7af"
+  integrity sha512-A0yyJEg5Q6rQsJoqnLd0u3/+0tXGtadfppiEGi9+Jax9YYGcoTJE867GswK4N8bRukVsj7aWgDJJaoio+Xduqg==
   dependencies:
     "@material-ui/core" "^4.11.4"
     "@popperjs/core" "^2.9.2"
