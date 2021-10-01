@@ -111,7 +111,7 @@ const Footer = () => {
           {t('No registration needed.')}
         </Text>
 
-        <Link external href="https://javaswapgitbook.gitbook.io/javaswap/">
+        <Link external href="https://javaswap.gitbook.io/javaswap/">
           {t('Learn how to start')}
         </Link>
         {!account && <ConnectWalletButton mt="24px" />}

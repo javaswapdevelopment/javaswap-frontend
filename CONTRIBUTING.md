@@ -1,7 +1,7 @@
 # Contributing to the Java ecosystem ☕
 
 Thanks for taking the time to contribute !
-You can start by reading our [Contribution guidelines](https://javaswapgitbook.gitbook.io/javaswap/code/contributing) first.
+You can start by reading our [Contribution guidelines](https://javaswap.gitbook.io/javaswap/code/contributing) first.
 
 ## Setup
 

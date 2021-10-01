@@ -15,8 +15,7 @@ const StyledCard = styled(Card)<{ background: string; rotation?: string }>`
 const IconWrapper = styled(Box)<{ rotation?: string }>`
   position: absolute;
   top: 24px;
-  right: 24px;
-
+  left: 24px;
   ${({ theme }) => theme.mediaQueries.md} {
     ${({ rotation }) => (rotation ? `transform: rotate(${rotation});` : '')}
   }

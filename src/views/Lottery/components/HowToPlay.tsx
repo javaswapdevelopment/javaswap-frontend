@@ -325,7 +325,7 @@ const HowToPlay: React.FC = () => {
                 {t(
                   'An average total of 35,000 JAVA from the treasury is added to lottery rounds over the course of a week. This JAVA is of course also included in rollovers! Read more in our guide to ',
                 )}
-                <InlineLink href="https://javaswapgitbook.gitbook.io/javaswap/tokenomics/java/java-tokenomics">
+                <InlineLink href="https://javaswap.gitbook.io/javaswap/tokenomics/java/java-tokenomics">
                   {t('JAVA Tokenomics')}
                 </InlineLink>
               </Text>
@@ -338,18 +338,7 @@ const HowToPlay: React.FC = () => {
       </GappedFlex>
       <Divider />
       <Flex justifyContent="center" alignItems="center" flexDirection={['column', 'column', 'row']}>
-        <Image width={240} height={172} src="/images/lottery/tombola.png" alt="tombola bunny" mr="8px" mb="16px" />
-        <Flex maxWidth="300px" flexDirection="column">
-          <Heading mb="16px" scale="md">
-            {t('Still got questions?')}
-          </Heading>
-          <Text>
-            {t('Check our in-depth guide on')}{' '}
-            <InlineLink href="https://javaswapgitbook.gitbook.io/javaswap/products/lottery/lottery-guide">
-              {t('how to play the JavaSwap lottery!')}
-            </InlineLink>
-          </Text>
-        </Flex>
+        <Image width={300} height={100} src="/images/lottery/tombola.png" alt="tombola bunny" mr="8px" mb="16px" />
       </Flex>
     </Box>
   )

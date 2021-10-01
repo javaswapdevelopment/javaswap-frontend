@@ -1,16 +1,12 @@
 import React from 'react'
-import { Heading, Flex, Text, useMatchBreakpoints } from '@javaswap/uikit'
+import { Heading, Flex, Text } from '@javaswap/uikit'
 
 const StatCardContent: React.FC<{ headingText: string; bodyText: string; highlightColor: string }> = ({
   headingText,
   bodyText,
   highlightColor,
 }) => {
-  const { isMobile, isTablet } = useMatchBreakpoints()
-  const isSmallerScreen = isMobile || isTablet
-  const split = headingText.split(' ')
-  const lastWord = split.pop()
-  const remainingWords = split.slice(0, split.length).join(' ')
+  
 
   return (
     <Flex
@@ -18,18 +14,12 @@ const StatCardContent: React.FC<{ headingText: string; bodyText: string; highlig
       minWidth="232px"
       width="fit-content"
       flexDirection="column"
-      justifyContent="flex-end"
+      justifyContent="flex-start"
       mt={[null, null, null, '64px']}
     >
-      {isSmallerScreen && remainingWords.length > 13 ? (
-        <Heading scale="lg">{remainingWords}</Heading>
-      ) : (
-        <Heading scale="xl">{remainingWords}</Heading>
-      )}
-      <Heading color={highlightColor} scale="xl" mb="24px">
-        {lastWord}
-      </Heading>
-      <Text color="textSubtle">{bodyText}</Text>
+      <Heading color="brownTitle" scale="xl">{headingText}</Heading>
+
+      <Text maxWidth="232px" color="textSubtle">{bodyText}</Text>
     </Flex>
   )
 }

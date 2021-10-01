@@ -104,11 +104,18 @@ const Hero = () => {
         id="homepage-hero"
       >
         <Flex flex="1" flexDirection="column">
-          <Heading scale="xxl" color="secondary" mb="24px">
-            {t('The moon is made of javas.')}
+          <Heading color="yellowTitle" scale="md" mb="12px">
+            {t('The moon is just a pit stop for JAVA,')}
           </Heading>
-          <Heading scale="md" mb="24px">
-            {t('Trade, earn, and win crypto on the most popular decentralized platform in the galaxy.')}
+        
+          <Heading scale="xxl" color="orangeTitle">
+            {t('THE GALAXY')}
+          </Heading>
+          <Heading scale="xxl" color="orangeTitle" mb="12px">
+            {t('is our next stop!.')}
+          </Heading>
+          <Heading color="yellowTitle" scale="md" mb="24px">
+            {t('Trading, staking, farming and gaming have never been so easy on the most affordable DEX in the DeFi ecosystem! Prepare for JavaSwap’s intergalactic take off!')}
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}
@@ -132,6 +139,8 @@ const Hero = () => {
           </StarsWrapper>
         </Flex>
       </Flex>
+
+      
     </>
   )
 }
