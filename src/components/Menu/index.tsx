@@ -7,6 +7,7 @@ import { usePriceJavaUsdc } from 'state/farms/hooks'
 import config from './config'
 import UserMenu from './UserMenu'
 import GlobalSettings from './GlobalSettings'
+import Countdown from './Countdown'
 
 const Menu = (props) => {
   const { isDark, toggleTheme } = useTheme()
@@ -25,6 +26,7 @@ const Menu = (props) => {
       javaPriceUsd={javaPriceUsd.toNumber()}
       links={config(t)}
       profile={null}
+      alert={<Countdown nextEventTime={1633478400000} preCountdownText="Coming Soon" postCountdownText="Go Presale" />}
       {...props}
     />
   )

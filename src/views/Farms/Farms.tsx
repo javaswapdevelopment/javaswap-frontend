@@ -2,7 +2,7 @@ import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react'
 import { Route, useRouteMatch, useLocation } from 'react-router-dom'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Image, Heading, RowType, Toggle, Text, Flex } from '@javaswap/uikit'
+import { Image, Heading, RowType, Toggle, Text, Flex, LinearStepper } from '@javaswap/uikit'
 import { ChainId } from '@javaswap/sdk'
 import styled from 'styled-components'
 import FlexLayout from 'components/Layout/Flex'
@@ -94,6 +94,14 @@ const ViewControls = styled.div`
       padding: 0;
     }
   }
+`
+
+const ContainerStepper = styled.div`
+  display:none;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    display:block;
+  }
+
 `
 
 
@@ -372,12 +380,19 @@ const Farms: React.FC = () => {
     <>
       <img src="/images/banners/farm.jpg" alt="JAVASWAP" width="100%" />
       <PageHeader background="transparent">
-        <Heading as="h1" scale="xxl" color="secondary" mb="24px">
-          {t('Farms')}
-        </Heading>
-        <Heading scale="lg" color="text">
-          {t('Stake Liquidity Pool (LP) tokens to earn.')}
-        </Heading>
+        <Flex justifyContent="space-between">
+          <div>
+          <Heading as="h1" scale="xxl" color="secondary" mb="24px">
+            {t('Farms')}
+          </Heading>
+          <Heading scale="lg" color="text">
+            {t('Stake Liquidity Pool (LP) tokens to earn.')}
+          </Heading>
+          </ div>
+          <ContainerStepper>
+          <LinearStepper text1={t('Get underlying tokens')} text2={t('Add liquidity')} text3={t('Stake LP token in farms')} text4={t('Earn JAVA')}/>
+          </ ContainerStepper>
+        </Flex>
       </PageHeader>
       <Page>
         <ControlContainer>

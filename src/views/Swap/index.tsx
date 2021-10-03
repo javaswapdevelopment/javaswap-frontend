@@ -521,7 +521,7 @@ export default function Swap({ history }: RouteComponentProps) {
         <UnsupportedCurrencyFooter currencies={[currencies.INPUT, currencies.OUTPUT]} />
       )}
       <ContainerStepper>
-        <LinearStepper />
+        <LinearStepper text1={t('Select from asset')} text2={t('Select target asset')} text3={t('Input amount to swap')} text4={t('Execute swap')}/>
       </ContainerStepper>
     </Page>
   )

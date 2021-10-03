@@ -37,7 +37,7 @@ const ReferralCard = () => {
             <>
               <Text bold color="primary" fontSize="30px">
                 {t('Share the referral link below to invite your friends and' )} <br />
-                {t('earn 2% of your friends earning FOREVER!')}
+                {t('earn 2% of your friends earning!')}
               </Text>
               <br />
               <StyledButton />

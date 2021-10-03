@@ -5,7 +5,7 @@ import { ethers } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
 import BigNumber from 'bignumber.js'
 import { useWeb3React } from '@web3-react/core'
-import { Heading, Flex, Image, Text } from '@javaswap/uikit'
+import { Heading, Flex, Image, Text, LinearStepper } from '@javaswap/uikit'
 import orderBy from 'lodash/orderBy'
 import partition from 'lodash/partition'
 import { useTranslation } from 'contexts/Localization'
@@ -272,6 +272,7 @@ const Pools: React.FC = () => {
             <BountyCard />
           </Flex>
         </Flex>
+        <LinearStepper text1={t('Enable token in pool')} text2={t('Stake Token')} text3={t('Earn JAVA or project tokens')} text4="Withdraw or auto compound earns"  />
       </PageHeader>
       <Page>
         <PoolControls>

@@ -14,18 +14,12 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
   {
     label: t('Swap'),
     icon: 'TradeIcon',
-    items: [
-      {
-        label: t('Trade'),
-        href: '/swap',
-        icon: 'TradeIcon',
-      },
-      {
-        label: t('Bridge'),
-        href: '/bridge',
-        icon: 'BridgeIcon',
-      },
-    ],
+    href: '/swap',
+  },
+  {
+    label: t('Bridge'),
+    href: '/bridge',
+    icon: 'BridgeIcon',
   },
   {
     label: t('Farms'),
@@ -63,7 +57,6 @@ const config: (t: ContextApi['t']) => MenuEntry[] = (t) => [
     label: t('IFO'),
     icon: 'IfoIcon',
     href: '/ifo',
-    status: menuStatus.SOON
   },
   {
     label: t('Analytics'),
